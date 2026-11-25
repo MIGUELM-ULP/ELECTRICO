@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicio Eléctrico Santander | El Gordo Eléctrico - Electricidad Automotriz</title>
-    <!-- Carga de Tailwind CSS -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Fuentes Google Fonts: Montserrat / Rajdhani para títulos audaces e Inter para lectura -->
+    <!-- Tipografías -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@700;800;900&family=Rajdhani:wght@600;700;800&display=swap" rel="stylesheet">
-    <!-- Iconos Phosphor Icons -->
+    <!-- Iconos Phosphor -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <script>
+        // Configuración estética oscura con acentos neón rojo (#E62E2D) y azul eléctrico (#00B4D8)
         tailwind.config = {
             theme: {
                 extend: {
@@ -34,18 +35,12 @@
                         }
                     },
                     animation: {
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'float': 'float 6s ease-in-out infinite',
-                        'spark': 'spark 2.5s ease-in-out infinite',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0px)' },
                             '50%': { transform: 'translateY(-6px)' },
-                        },
-                        spark: {
-                            '0%, 100%': { opacity: '0.85', filter: 'drop-shadow(0 0 12px rgba(0, 180, 216, 0.8))' },
-                            '50%': { opacity: '1', filter: 'drop-shadow(0 0 24px rgba(230, 46, 45, 0.95))' },
                         }
                     }
                 }
@@ -56,129 +51,127 @@
 <body class="bg-workshop-dark text-slate-200 font-sans antialiased selection:bg-workshop-red selection:text-white overflow-x-hidden">
 
     <!-- Notificación Toast Personalizada (Reemplazo seguro de alert) -->
-    <div id="toast-notification" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none max-w-sm w-full px-4">
+    <div id="toast-notification" class="fixed bottom-24 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none max-w-sm w-full px-4">
         <div class="bg-workshop-card border-l-4 border-workshop-blue shadow-2xl shadow-workshop-blue/20 rounded-xl p-4 flex items-start gap-3 backdrop-blur-md">
             <div class="text-workshop-blue text-2xl mt-0.5">
                 <i class="ph-fill ph-lightning"></i>
             </div>
             <div class="flex-1">
-                <h4 id="toast-title" class="font-display font-bold text-white text-lg leading-tight">¡Solicitud Enviada!</h4>
-                <p id="toast-message" class="text-slate-300 text-sm mt-1">Te estamos redirigiendo para coordinar con El Gordo Eléctrico.</p>
+                <h4 id="toast-title" class="font-display font-bold text-white text-lg leading-tight">¡Listo!</h4>
+                <p id="toast-message" class="text-slate-300 text-sm mt-1">Acción completada con éxito.</p>
             </div>
         </div>
     </div>
 
-    <!-- Barra de Navegación Superior -->
-    <header class="fixed top-0 left-0 right-0 z-40 bg-workshop-dark/85 backdrop-blur-md border-b border-workshop-border/80 transition-all duration-300">
+    <!-- 1) BARRA SUPERIOR CON LOGO SVG, ENLACES RÁPIDOS, BOTÓN EMERGENCIA Y WHATSAPP 321 302 5418 -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-workshop-dark/90 backdrop-blur-md border-b border-workshop-border/80 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Marca / Logo Textual + Rayo -->
-                <a href="#inicio" class="flex items-center gap-3 group">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-workshop-red via-red-700 to-slate-900 border border-workshop-blue/50 flex items-center justify-center shadow-lg shadow-workshop-red/30 group-hover:scale-105 transition-transform relative overflow-hidden">
-                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,180,216,0.45),transparent_65%)]"></div>
-                        <i class="ph-fill ph-lightning text-white text-2xl relative z-10 drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"></i>
+            <div class="flex items-center justify-between h-20 gap-2">
+                <!-- Logo SVG con auto deportivo rojo y rayo neón -->
+                <a href="#inicio" class="flex items-center gap-3 group shrink-0">
+                    <div class="w-14 h-11 rounded-xl bg-gradient-to-br from-[#0B101B] via-[#121929] to-workshop-dark border border-workshop-blue/50 flex items-center justify-center shadow-lg shadow-workshop-red/25 group-hover:scale-105 transition-transform relative overflow-hidden px-1">
+                        <svg viewBox="0 0 120 70" class="w-full h-full" xmlns="http://www.w3.org/2000/svg" aria-label="Logo Servicio Eléctrico Santander">
+                            <path d="M 18 46 A 42 26 0 0 1 102 46" fill="none" stroke="#00B4D8" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M 14 52 L 22 42 Q 36 37 54 31 Q 72 28 96 36 L 108 32 L 104 45 Q 110 48 108 52 Z" fill="#E62E2D"/>
+                            <path d="M 48 33 L 58 25 Q 72 24 88 33 Z" fill="#090B10"/>
+                            <circle cx="34" cy="52" r="8" fill="#05070B" stroke="#38BDF8" stroke-width="1.5"/>
+                            <circle cx="88" cy="52" r="8" fill="#05070B" stroke="#38BDF8" stroke-width="1.5"/>
+                            <polygon points="74,6 52,35 64,35 48,62 72,31 60,31" fill="#FF3B3A" stroke="#FFFFFF" stroke-width="1.2" stroke-linejoin="round"/>
+                        </svg>
                     </div>
                     <div>
-                        <span class="block font-logo font-extrabold text-base sm:text-lg tracking-wider text-white leading-none uppercase">
+                        <span class="block font-logo font-extrabold text-sm sm:text-base tracking-wider text-white leading-none uppercase">
                             Servicio Eléctrico
                         </span>
-                        <span class="block font-logo font-black text-sm sm:text-base tracking-widest text-workshop-blue leading-tight uppercase drop-shadow-[0_0_8px_rgba(0,180,216,0.5)]">
+                        <span class="block font-logo font-black text-xs sm:text-sm tracking-widest text-workshop-blue leading-tight uppercase drop-shadow-[0_0_8px_rgba(0,180,216,0.5)]">
                             Santander
                         </span>
                     </div>
                 </a>
 
-                <!-- Menú Desktop -->
-                <nav class="hidden md:flex items-center gap-7">
+                <!-- Enlaces Rápidos Desktop -->
+                <nav class="hidden xl:flex items-center gap-5">
                     <a href="#inicio" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Inicio</a>
-                    <a href="#nosotros" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">El Gordo Eléctrico</a>
-                    <a href="#especialidades" class="text-sm font-medium text-slate-300 hover:text-workshop-blue transition-colors">Lo Que Hacemos</a>
-                    <a href="#galeria" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Taller y Trabajos</a>
-                    <a href="#contacto" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Agendar Cita</a>
+                    <a href="#simulador" class="text-sm font-medium text-slate-300 hover:text-workshop-blue transition-colors">Síntomas</a>
+                    <a href="#checklist" class="text-sm font-medium text-slate-300 hover:text-workshop-blue transition-colors">Pre-Tecno</a>
+                    <a href="#especialidades" class="text-sm font-medium text-slate-300 hover:text-workshop-blue transition-colors">Servicios</a>
+                    <a href="#calidad" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Calidad</a>
+                    <a href="#testimonios" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Testimonios</a>
+                    <a href="#contacto" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Cita</a>
                 </nav>
 
-                <!-- Botón CTA Rápido + Menú Móvil -->
-                <div class="flex items-center gap-3">
-                    <a href="tel:+573213025418" class="hidden lg:inline-flex items-center gap-2 bg-workshop-card hover:bg-workshop-border text-slate-200 border border-workshop-blue/40 hover:border-workshop-blue font-display font-bold uppercase tracking-wider text-sm px-4 py-2.5 rounded-xl transition-all">
-                        <i class="ph-fill ph-phone-call text-workshop-blue text-lg"></i>
+                <!-- Botones Emergencia / No Prende + WhatsApp 321 302 5418 + Menú Móvil -->
+                <div class="flex items-center gap-2 sm:gap-2.5">
+                    <a href="#emergencia" class="hidden sm:inline-flex items-center gap-1.5 bg-workshop-red hover:bg-workshop-redGlow text-white font-display font-bold uppercase tracking-wider text-xs md:text-sm px-3.5 py-2.5 rounded-xl shadow-lg shadow-workshop-red/30 transition-all">
+                        <i class="ph-fill ph-warning-octagon text-base"></i>
+                        <span>Emergencia / No Prende</span>
+                    </a>
+
+                    <button type="button" id="header-whatsapp-btn" class="inline-flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20bd5a] text-slate-950 font-display font-extrabold uppercase tracking-wider text-xs md:text-sm px-3.5 py-2.5 rounded-xl shadow-lg shadow-[#25D366]/25 transition-all cursor-pointer">
+                        <i class="ph-fill ph-whatsapp-logo text-lg"></i>
                         <span>321 302 5418</span>
-                    </a>
+                    </button>
 
-                    <a href="#contacto" class="hidden sm:inline-flex items-center gap-2 bg-workshop-red hover:bg-workshop-redGlow text-white font-display font-bold uppercase tracking-wider text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-workshop-red/30 hover:shadow-workshop-red/50 transition-all">
-                        <i class="ph-bold ph-wrench"></i>
-                        <span>Diagnóstico</span>
-                    </a>
-
-                    <!-- Botón Hamburguesa Móvil -->
-                    <button id="mobile-menu-btn" aria-label="Abrir menú" class="md:hidden p-2.5 rounded-xl bg-workshop-card border border-workshop-border text-slate-200 hover:text-white hover:border-workshop-blue transition-colors">
+                    <!-- Botón Menú Móvil -->
+                    <button type="button" id="mobile-menu-btn" aria-label="Abrir menú" class="xl:hidden p-2.5 rounded-xl bg-workshop-card border border-workshop-border text-slate-200 hover:text-white hover:border-workshop-blue transition-colors">
                         <i id="menu-icon" class="ph-bold ph-list text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Menú Desplegable Móvil -->
-        <div id="mobile-menu" class="hidden md:hidden bg-workshop-card border-b border-workshop-border px-4 pt-2 pb-6 space-y-2 shadow-2xl">
-            <a href="#inicio" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-workshop-dark hover:text-workshop-blue transition-colors">Inicio</a>
-            <a href="#nosotros" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-workshop-dark hover:text-workshop-blue transition-colors">El Gordo Eléctrico</a>
-            <a href="#especialidades" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-workshop-dark hover:text-workshop-blue transition-colors">Lo Que Hacemos (Servicios)</a>
-            <a href="#galeria" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-workshop-dark hover:text-workshop-blue transition-colors">Galería del Taller</a>
+        <!-- Menú Desplegable Móvil / Tablet -->
+        <div id="mobile-menu" class="hidden xl:hidden bg-workshop-card border-b border-workshop-border px-4 pt-2 pb-6 space-y-2 shadow-2xl">
+            <a href="#inicio" class="mobile-link block px-4 py-2.5 rounded-xl text-base font-medium text-slate-200 hover:bg-workshop-dark hover:text-workshop-blue">Inicio y El Gordo Eléctrico</a>
+            <a href="#emergencia" class="mobile-link block px-4 py-2.5 rounded-xl text-base font-bold text-workshop-red bg-workshop-red/10 border border-workshop-red/30">🚨 Emergencia / No Prende</a>
+            <a href="#simulador" class="mobile-link block px-4 py-2.5 rounded-xl text-base font-medium text-slate-200 hover:bg-workshop-dark hover:text-workshop-blue">Simulador Síntoma → Revisión</a>
+            <a href="#checklist" class="mobile-link block px-4 py-2.5 rounded-xl text-base font-medium text-slate-200 hover:bg-workshop-dark hover:text-workshop-blue">Checklist Pre-Tecnomecánica</a>
+            <a href="#especialidades" class="mobile-link block px-4 py-2.5 rounded-xl text-base font-medium text-slate-200 hover:bg-workshop-dark hover:text-workshop-blue">Lo Que Hacemos (Servicios)</a>
+            <a href="#calidad" class="mobile-link block px-4 py-2.5 rounded-xl text-base font-medium text-slate-200 hover:bg-workshop-dark hover:text-workshop-blue">Trabajos con Sello de Calidad</a>
+            <a href="#testimonios" class="mobile-link block px-4 py-2.5 rounded-xl text-base font-medium text-slate-200 hover:bg-workshop-dark hover:text-workshop-blue">Testimonios Reales</a>
+            <a href="#contacto" class="mobile-link block px-4 py-2.5 rounded-xl text-base font-medium text-slate-200 hover:bg-workshop-dark hover:text-workshop-blue">Agendar Cita</a>
             <a href="tel:+573213025418" class="mobile-link flex items-center gap-2 px-4 py-3 rounded-xl text-base font-semibold text-workshop-blue bg-workshop-blue/10 border border-workshop-blue/30">
                 <i class="ph-fill ph-phone-call text-xl"></i>
-                <span>Llamar: 321 302 5418</span>
+                <span>Llamar: +57 321 302 5418</span>
             </a>
-            <a href="#contacto" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium bg-workshop-red/10 text-workshop-red border border-workshop-red/30 font-semibold">Agendar Cita Ahora</a>
         </div>
     </header>
 
-    <!-- HERO SECTION (Portada Principal con Logo Gráfico Oficial de Alto Impacto + Soporte Imagen Local) -->
-    <section id="inicio" class="relative pt-24 pb-16 lg:pt-28 lg:pb-24 overflow-hidden">
-        <!-- Resplandores Ambientales Neón Rojo y Azul -->
+    <!-- 2) PORTADA HERO CON EMBLEMA OFICIAL SVG, CARGA DE IMAGEN LOCAL Y PRESENTACIÓN COMPLETA -->
+    <section id="inicio" class="relative pt-24 pb-12 lg:pt-28 lg:pb-16 overflow-hidden">
+        <!-- Resplandores Ambientales -->
         <div class="absolute top-20 -left-32 w-96 h-96 bg-workshop-blue/20 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute bottom-10 -right-32 w-96 h-96 bg-workshop-red/20 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <!-- Contenedor Principal de Portada (Banner Impactante) -->
             <div class="relative rounded-3xl overflow-hidden border border-workshop-border/90 shadow-2xl shadow-black/80 bg-workshop-card">
-                
-                <!-- Marco Neón Superior e Inferior -->
                 <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-workshop-blue via-workshop-red to-workshop-blue z-30"></div>
                 <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-workshop-red via-workshop-blue to-workshop-red z-30"></div>
 
-                <!-- Escenario Visual de Portada con Fondo de Taller + Emblema Oficial + Opción de Subir/Mostrar Foto Propia -->
-                <div id="hero-cover-container" class="relative w-full min-h-[380px] sm:min-h-[460px] lg:min-h-[540px] flex items-center justify-center overflow-hidden bg-[#07090E]">
-                    
-                    <!-- Fondo Fotográfico de Taller Automotriz con Atmósfera Neón -->
-                    <img 
-                        id="hero-bg-photo"
-                        src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1800&q=85" 
-                        alt="Fondo Taller Servicio Eléctrico Santander" 
+                <!-- Escenario de Portada -->
+                <div class="relative w-full min-h-[380px] sm:min-h-[460px] lg:min-h-[530px] flex items-center justify-center overflow-hidden bg-[#07090E]">
+                    <img
+                        src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1800&q=85"
+                        alt="Taller Servicio Eléctrico Santander"
+                        onerror="this.onerror=null; this.src='https://placehold.co/1600x700/07090E/00B4D8?text=Servicio+Electrico+Santander';"
                         class="absolute inset-0 w-full h-full object-cover object-center opacity-35 scale-105"
                     >
 
-                    <!-- Si el usuario tiene el archivo local 'imagenesportada-logo.webp.jpg' en la misma carpeta o lo carga, se superpone limpiamente -->
-                    <img 
+                    <!-- Imagen local opcional si existe en la carpeta o se sube desde el dispositivo -->
+                    <img
                         id="hero-custom-logo-img"
-                        src="imagenesportada-logo.webp.jpg" 
+                        src="imagenesportada-logo.webp.jpg"
                         alt="Portada Oficial Servicio Eléctrico Santander"
-                        onload="this.classList.remove('hidden'); document.getElementById('hero-vector-emblem').classList.add('hidden');"
-                        onerror="this.classList.add('hidden');"
                         class="hidden absolute inset-0 w-full h-full object-cover object-center z-20"
                     >
 
-                    <!-- Capas de Iluminación Neón Azul y Rojo estilo Portada -->
+                    <!-- Capas Neón -->
                     <div class="absolute inset-0 bg-gradient-to-r from-[#07090E]/90 via-[#07090E]/55 to-[#07090E]/90 pointer-events-none"></div>
                     <div class="absolute -top-24 -left-24 w-96 h-96 bg-workshop-blue/30 rounded-full blur-3xl pointer-events-none"></div>
                     <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-workshop-red/30 rounded-full blur-3xl pointer-events-none"></div>
-                    <!-- Líneas de luz neón decorativas -->
-                    <div class="hidden sm:block absolute top-10 left-0 w-64 h-1 bg-gradient-to-r from-workshop-blue to-transparent shadow-[0_0_20px_#00B4D8] -rotate-12 opacity-80"></div>
-                    <div class="hidden sm:block absolute top-14 right-0 w-72 h-1 bg-gradient-to-l from-workshop-blue to-transparent shadow-[0_0_20px_#00B4D8] opacity-80"></div>
-                    <div class="hidden sm:block absolute top-20 right-0 w-56 h-1 bg-gradient-to-l from-workshop-red to-transparent shadow-[0_0_20px_#E62E2D] opacity-80"></div>
 
-                    <!-- EMBLEMA VECTORIAL OFICIAL DE ALTA DEFINICIÓN (Siempre visible aunque no haya archivos locales) -->
+                    <!-- Emblema Oficial SVG -->
                     <div id="hero-vector-emblem" class="relative z-10 max-w-4xl w-full mx-auto px-4 py-10 sm:py-14 flex flex-col items-center text-center animate-float">
-                        
-                        <!-- Gráfico SVG: Auto Deportivo Rojo + Arco Neón Azul + Rayo Eléctrico Central -->
                         <div class="relative w-full max-w-[540px] mx-auto mb-2 sm:mb-3 select-none">
                             <svg viewBox="0 0 640 270" class="w-full h-auto drop-shadow-[0_14px_28px_rgba(0,0,0,0.95)]" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
@@ -208,38 +201,21 @@
                                     </filter>
                                 </defs>
 
-                                <!-- Arco Neón Azul detrás del vehículo -->
                                 <path d="M 135 185 A 185 115 0 0 1 505 185" fill="none" stroke="url(#neonBlueArc)" stroke-width="6" stroke-linecap="round" filter="url(#blueGlow)"/>
                                 <path d="M 165 185 A 155 95 0 0 1 475 185" fill="none" stroke="#0B1324" stroke-width="14"/>
-
-                                <!-- Base oscura / contorno del auto deportivo -->
                                 <path d="M 85 210 L 95 178 Q 115 162 175 154 L 245 118 Q 315 104 415 122 L 495 148 L 535 132 L 548 148 L 532 168 Q 552 182 548 210 Z" fill="#070A12" stroke="#0F172A" stroke-width="6" stroke-linejoin="round"/>
-
-                                <!-- Carrocería Deportiva Roja -->
                                 <path d="M 96 202 L 106 178 Q 132 164 184 156 L 252 122 Q 320 110 412 126 L 488 150 L 526 136 L 536 147 L 516 166 Q 538 180 536 202 L 485 202 A 42 42 0 0 0 403 202 L 235 202 A 42 42 0 0 0 153 202 Z" fill="url(#carRedGrad)"/>
-
-                                <!-- Ventanas / Cabina oscura agresiva -->
                                 <path d="M 206 154 L 258 128 Q 318 118 396 130 L 444 152 Z" fill="#090D16"/>
-                                <!-- Brillo aerodinámico blanco/celeste en techo -->
                                 <path d="M 212 152 L 260 129 Q 315 120 385 130" fill="none" stroke="#BAE6FD" stroke-width="2.5" stroke-linecap="round"/>
-
-                                <!-- Faro delantero afilado -->
                                 <polygon points="112,179 148,172 136,184 108,185" fill="#FFFFFF"/>
-                                <!-- Líneas de diseño lateral -->
                                 <path d="M 235 182 L 405 176 L 470 165" fill="none" stroke="#7F1D1D" stroke-width="4" stroke-linecap="round"/>
                                 <path d="M 245 174 L 395 169" fill="none" stroke="#FCA5A5" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
-
-                                <!-- Ruedas oscuras deportivas -->
                                 <circle cx="194" cy="204" r="35" fill="#05070B" stroke="#1E293B" stroke-width="4"/>
                                 <circle cx="194" cy="204" r="18" fill="#0F172A"/>
                                 <circle cx="444" cy="204" r="35" fill="#05070B" stroke="#1E293B" stroke-width="4"/>
                                 <circle cx="444" cy="204" r="18" fill="#0F172A"/>
-
-                                <!-- RAYO ELÉCTRICO CENTRAL GIGANTE (Cruza el auto diagonalmente) -->
                                 <polygon points="395,22 268,146 322,146 258,242 388,118 332,118" fill="#060911" stroke="#060911" stroke-width="14" stroke-linejoin="round"/>
                                 <polygon points="392,28 274,144 326,144 264,236 382,120 328,120" fill="url(#boltGrad)" stroke="#FF8A8A" stroke-width="2" stroke-linejoin="round" filter="url(#redGlow)"/>
-
-                                <!-- Chispas eléctricas neón -->
                                 <circle cx="245" cy="130" r="3" fill="#38BDF8"/>
                                 <circle cx="410" cy="95" r="2.5" fill="#FF5E5E"/>
                                 <circle cx="225" cy="155" r="2" fill="#FFFFFF"/>
@@ -247,7 +223,6 @@
                             </svg>
                         </div>
 
-                        <!-- Tipografía Oficial del Logotipo -->
                         <div class="relative -mt-4 sm:-mt-6 px-4 py-2 rounded-2xl bg-[#070A12]/90 border-2 border-slate-800 shadow-[0_10px_35px_rgba(0,0,0,0.95)]">
                             <p class="font-logo font-extrabold text-xl sm:text-3xl md:text-4xl tracking-wider text-white uppercase drop-shadow-[0_2px_10px_rgba(56,189,248,0.65)]">
                                 SERVICIO ELÉCTRICO
@@ -257,47 +232,51 @@
                             </p>
                         </div>
 
-                        <!-- Etiqueta del Especialista -->
                         <div class="mt-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-workshop-red/20 border border-workshop-red/50 text-white text-xs sm:text-sm font-display font-bold uppercase tracking-widest shadow-lg">
                             <i class="ph-fill ph-lightning text-workshop-blue"></i>
                             <span>Dirigido por El Gordo Eléctrico</span>
                         </div>
                     </div>
 
-                    <!-- Botón discreto en esquina superior derecha para probar o cargar tu propia imagen local al instante -->
+                    <!-- Botón para cargar imagen local 'imagenesportada-logo.webp.jpg' u otra desde el equipo -->
                     <div class="absolute top-4 right-4 z-30">
-                        <label for="upload-logo-input" title="Cargar tu archivo de portada desde tu dispositivo" class="cursor-pointer inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-workshop-dark/80 hover:bg-workshop-card border border-workshop-border hover:border-workshop-blue text-slate-300 hover:text-white text-xs font-medium backdrop-blur-md transition-all shadow-lg">
+                        <label for="upload-logo-input" title="Cargar imagen local (ej. imagenesportada-logo.webp.jpg)" class="cursor-pointer inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-workshop-dark/85 hover:bg-workshop-card border border-workshop-border hover:border-workshop-blue text-slate-300 hover:text-white text-xs font-medium backdrop-blur-md transition-all shadow-lg">
                             <i class="ph-bold ph-image text-workshop-blue text-base"></i>
-                            <span class="hidden sm:inline">Cargar mi imagen de portada</span>
+                            <span>Cargar imagen de portada</span>
                         </label>
-                        <input type="file" id="upload-logo-input" accept="image/*" class="hidden" onchange="previsualizarPortadaLocal(event)">
+                        <input type="file" id="upload-logo-input" accept="image/*" class="hidden">
                     </div>
                 </div>
 
-                <!-- Barra Inferior de Bienvenida y Llamado a la Acción debajo/integrada al Banner -->
-                <div class="bg-gradient-to-r from-workshop-dark via-workshop-card to-workshop-dark p-6 sm:p-8 lg:p-10 border-t border-workshop-border/80">
+                <!-- Presentación de El Gordo Eléctrico y Texto Completo -->
+                <div id="nosotros" class="bg-gradient-to-r from-workshop-dark via-workshop-card to-workshop-dark p-6 sm:p-8 lg:p-10 border-t border-workshop-border/80 space-y-6">
                     <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                        <div class="max-w-2xl">
-                            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-workshop-blue/10 border border-workshop-blue/30 text-workshop-blue text-xs sm:text-sm font-semibold uppercase tracking-wider mb-3">
+                        <div class="max-w-4xl space-y-4">
+                            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-workshop-blue/10 border border-workshop-blue/30 text-workshop-blue text-xs sm:text-sm font-semibold uppercase tracking-wider">
                                 <span class="w-2 h-2 rounded-full bg-workshop-blue animate-ping"></span>
-                                <span>Especialistas en Electricidad Automotriz y Car Audio</span>
+                                <span>El Gordo Eléctrico • Electricidad Automotriz</span>
                             </div>
                             <h1 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white uppercase tracking-tight leading-tight">
                                 ¡Conoce <span class="text-transparent bg-clip-text bg-gradient-to-r from-workshop-red to-red-400">Servicio Eléctrico Santander</span>! ⚡🚗
                             </h1>
-                            <p class="text-slate-300 text-base sm:text-lg mt-2 leading-relaxed">
-                                Soluciones certeras, trabajo limpio y respaldo real de taller con <strong class="text-white font-semibold">El Gordo Eléctrico</strong>.
+                            <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                                Al frente de nuestro taller está el reconocido <strong class="text-white font-semibold">Gordo Eléctrico</strong>, un referente de confianza, experiencia y buen trato cuando se trata de resolver lo que otros no logran encontrar. En <strong class="text-workshop-blue font-semibold">Servicio Eléctrico Santander</strong> somos especialistas en electricidad automotriz y trabajamos cada día comprometidos con el rendimiento, la seguridad y el confort de tu vehículo.
+                            </p>
+                            <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                                Sabemos lo importante que es tu carro o herramienta de trabajo, por eso combinamos responsabilidad, dedicación y una atención cercana y personalizada para brindarte diagnósticos certeros y soluciones que realmente duran en sistemas eléctricos, electrónicos y de sonido.
+                            </p>
+                            <p class="text-white font-medium text-base sm:text-lg bg-workshop-red/10 border border-workshop-red/30 rounded-2xl p-4">
+                                Si buscas un servicio serio, con sabor a calle y taller de verdad, aquí estamos para ayudarte. <span class="text-workshop-blue font-bold">¡Tu vehículo está en buenas manos!</span>
                             </p>
                         </div>
 
-                        <!-- Botones de Acción Hero -->
-                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 shrink-0">
-                            <a href="#contacto" class="inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-workshop-red to-red-700 hover:from-workshop-redGlow hover:to-workshop-red text-white font-display font-bold text-lg uppercase tracking-wider px-7 py-4 rounded-2xl shadow-lg shadow-workshop-red/30 hover:shadow-workshop-red/50 transform hover:-translate-y-0.5 transition-all">
-                                <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
-                                <span>Agendar Revisión</span>
+                        <div class="flex flex-col sm:flex-row lg:flex-col items-stretch gap-3 shrink-0">
+                            <a href="#contacto" class="inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-workshop-red to-red-700 hover:from-workshop-redGlow hover:to-workshop-red text-white font-display font-bold text-lg uppercase tracking-wider px-6 py-4 rounded-2xl shadow-lg shadow-workshop-red/30 transition-all">
+                                <i class="ph-fill ph-calendar-check text-2xl"></i>
+                                <span>Agendar Cita</span>
                             </a>
-                            <a href="#especialidades" class="inline-flex items-center justify-center gap-2 bg-workshop-dark/90 hover:bg-workshop-border text-white border border-workshop-blue/40 hover:border-workshop-blue font-display font-bold text-lg uppercase tracking-wider px-7 py-4 rounded-2xl shadow-lg shadow-workshop-blue/10 transition-all">
-                                <span>Ver Servicios</span>
+                            <a href="#especialidades" class="inline-flex items-center justify-center gap-2 bg-workshop-dark/90 hover:bg-workshop-border text-white border border-workshop-blue/40 hover:border-workshop-blue font-display font-bold text-lg uppercase tracking-wider px-6 py-4 rounded-2xl transition-all">
+                                <span>Ver Lo Que Hacemos</span>
                                 <i class="ph-bold ph-arrow-down text-workshop-blue"></i>
                             </a>
                         </div>
@@ -307,142 +286,248 @@
         </div>
     </section>
 
-    <!-- SECCIÓN PRESENTACIÓN: EL GORDO ELÉCTRICO Y NUESTRA ESENCIA -->
-    <section id="nosotros" class="py-16 lg:py-24 relative">
+    <!-- 3) FRANJA DE EMERGENCIA / ¿NO PRENDE? CON LLAMADA DIRECTA Y WHATSAPP URGENTE AL 3213025418 -->
+    <section id="emergencia" class="py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-                
-                <!-- Columna Izquierda: Tarjeta de Identidad del Taller -->
-                <div class="lg:col-span-5 relative">
-                    <div class="relative rounded-3xl bg-workshop-card border border-workshop-border p-8 sm:p-10 shadow-2xl overflow-hidden">
-                        <!-- Efecto luz neón esquinas -->
-                        <div class="absolute -top-16 -right-16 w-40 h-40 bg-workshop-red/25 rounded-full blur-2xl"></div>
-                        <div class="absolute -bottom-16 -left-16 w-40 h-40 bg-workshop-blue/25 rounded-full blur-2xl"></div>
-
-                        <div class="relative z-10">
-                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-workshop-blue/20 to-workshop-red/20 border border-workshop-blue/40 flex items-center justify-center mb-6 shadow-inner">
-                                <i class="ph-fill ph-car-battery text-4xl text-workshop-blue"></i>
-                            </div>
-
-                            <span class="text-workshop-red font-display font-bold uppercase tracking-widest text-sm">Liderazgo y Experiencia</span>
-                            <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white uppercase mt-1 mb-4">
-                                El Gordo Eléctrico
-                            </h2>
-                            <p class="text-slate-300 text-base leading-relaxed mb-6">
-                                Un referente de confianza, experiencia y buen trato cuando se trata de resolver lo que otros no logran encontrar.
-                            </p>
-
-                            <!-- Pilares Rápidos -->
-                            <div class="space-y-3 pt-4 border-t border-workshop-border/80">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-8 h-8 rounded-lg bg-workshop-red/15 text-workshop-red flex items-center justify-center shrink-0">
-                                        <i class="ph-bold ph-check"></i>
-                                    </span>
-                                    <span class="text-sm font-medium text-slate-200">Diagnósticos certeros sin adivinanzas</span>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <span class="w-8 h-8 rounded-lg bg-workshop-blue/15 text-workshop-blue flex items-center justify-center shrink-0">
-                                        <i class="ph-bold ph-check"></i>
-                                    </span>
-                                    <span class="text-sm font-medium text-slate-200">Cuidado de tu tiempo y tu bolsillo</span>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <span class="w-8 h-8 rounded-lg bg-workshop-red/15 text-workshop-red flex items-center justify-center shrink-0">
-                                        <i class="ph-bold ph-check"></i>
-                                    </span>
-                                    <span class="text-sm font-medium text-slate-200">Sabor a calle y taller de verdad</span>
-                                </div>
-                            </div>
-                        </div>
+            <div class="rounded-3xl bg-gradient-to-r from-workshop-red/25 via-[#181018] to-workshop-blue/20 border-2 border-workshop-red/60 p-6 sm:p-8 shadow-2xl shadow-workshop-red/20 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                <div class="flex items-start gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-workshop-red text-white flex items-center justify-center shrink-0 shadow-lg shadow-workshop-red/40">
+                        <i class="ph-fill ph-siren text-3xl"></i>
                     </div>
-                </div>
-
-                <!-- Columna Derecha: Texto Completo de Presentación -->
-                <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 text-workshop-blue font-display font-bold uppercase tracking-wider text-sm">
-                        <i class="ph-fill ph-lightning"></i>
-                        <span>Sobre Nuestro Taller</span>
-                    </div>
-
-                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white uppercase leading-tight">
-                        Comprometidos con el rendimiento, la seguridad y el confort de tu vehículo
-                    </h2>
-
-                    <div class="space-y-5 text-slate-300 text-base sm:text-lg leading-relaxed">
-                        <p>
-                            Al frente de nuestro taller está el reconocido <strong class="text-white font-semibold">Gordo Eléctrico</strong>, un referente de confianza, experiencia y buen trato cuando se trata de resolver lo que otros no logran encontrar. En <strong class="text-workshop-blue font-semibold">Servicio Eléctrico Santander</strong> somos especialistas en electricidad automotriz y trabajamos cada día comprometidos con el rendimiento, la seguridad y el confort de tu vehículo.
-                        </p>
-                        <p>
-                            Sabemos lo importante que es tu carro o herramienta de trabajo, por eso combinamos responsabilidad, dedicación y una atención cercana y personalizada para brindarte diagnósticos certeros y soluciones que realmente duran en sistemas eléctricos, electrónicos y de sonido.
-                        </p>
-                    </div>
-
-                    <!-- Banner Destacado de Confianza -->
-                    <div class="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-workshop-red/15 via-workshop-card to-workshop-blue/15 border border-workshop-red/30 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-workshop-red text-white flex items-center justify-center shrink-0 shadow-lg shadow-workshop-red/30">
-                            <i class="ph-fill ph-shield-check text-2xl"></i>
-                        </div>
-                        <p class="text-white font-medium text-base sm:text-lg">
-                            "Si buscas un servicio serio, con sabor a calle y taller de verdad, aquí estamos para ayudarte. <span class="text-workshop-blue font-bold">¡Tu vehículo está en buenas manos!</span>"
+                    <div>
+                        <span class="inline-block px-3 py-0.5 rounded-full bg-workshop-red text-white font-display font-bold text-xs uppercase tracking-widest mb-1">
+                            Atención Prioritaria • ¿No Prende?
+                        </span>
+                        <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-white uppercase leading-tight">
+                            ¿Tu vehículo se quedó sin batería, no da arranque o no quiere prender?
+                        </h2>
+                        <p class="text-slate-300 text-sm sm:text-base mt-1">
+                            Comunícate de inmediato con <strong class="text-white">El Gordo Eléctrico</strong> al <strong class="text-workshop-blue">321 302 5418</strong> para orientación rápida y revisión urgente.
                         </p>
                     </div>
                 </div>
 
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto shrink-0">
+                    <a href="tel:+573213025418" class="inline-flex items-center justify-center gap-2 bg-workshop-dark hover:bg-workshop-card text-white border border-workshop-blue font-display font-bold uppercase tracking-wider px-5 py-3.5 rounded-2xl transition-all">
+                        <i class="ph-fill ph-phone-call text-workshop-blue text-xl"></i>
+                        <span>Llamar 321 302 5418</span>
+                    </a>
+                    <button type="button" id="urgent-whatsapp-btn" class="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-slate-950 font-display font-extrabold uppercase tracking-wider px-6 py-3.5 rounded-2xl shadow-lg shadow-[#25D366]/25 transition-all cursor-pointer">
+                        <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
+                        <span>WhatsApp Urgente</span>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- NUEVA SECCIÓN: LO QUE HACEMOS - ESPECIALIDADES TÉCNICAS CON IMÁGENES -->
-    <section id="especialidades" class="py-16 lg:py-24 bg-workshop-card/60 border-y border-workshop-border/80 relative">
-        <div class="absolute inset-0 bg-[radial-gradient(#1E2536_1px,transparent_1px)] [background-size:24px_24px] opacity-30 pointer-events-none"></div>
+    <!-- 4) SIMULADOR INTERACTIVO SÍNTOMA -> POSIBLE REVISIÓN (5 SÍNTOMAS) -->
+    <section id="simulador" class="py-16 lg:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="rounded-3xl bg-workshop-card border border-workshop-border p-6 sm:p-10 shadow-2xl">
+                <div class="max-w-3xl mb-8">
+                    <span class="inline-flex items-center gap-2 text-workshop-blue font-display font-bold uppercase tracking-wider text-sm mb-2">
+                        <i class="ph-fill ph-stethoscope"></i>
+                        <span>Diagnóstico Guiado Rápido</span>
+                    </span>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white uppercase">
+                        Simulador Síntoma → Posible Revisión
+                    </h2>
+                    <p class="text-slate-300 text-base mt-2">
+                        Selecciona lo que le pasa a tu vehículo para ver qué revisamos primero en el taller y envíale el reporte directo por WhatsApp a <strong class="text-white">El Gordo Eléctrico</strong>.
+                    </p>
+                </div>
 
+                <!-- 5 Botones de Síntomas -->
+                <div id="symptom-buttons" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-8">
+                    <button type="button" data-symptom-key="clic_no_prende" class="symptom-btn text-left p-4 rounded-2xl bg-workshop-dark border-2 border-workshop-blue text-white font-display font-bold text-base leading-snug transition-all cursor-pointer">
+                        <span class="block text-xs uppercase tracking-wider text-workshop-blue mb-1">Síntoma 01</span>
+                        Hace clic pero no prende
+                    </button>
+
+                    <button type="button" data-symptom-key="sin_bateria" class="symptom-btn text-left p-4 rounded-2xl bg-workshop-dark border border-workshop-border hover:border-workshop-blue/60 text-slate-200 font-display font-bold text-base leading-snug transition-all cursor-pointer">
+                        <span class="block text-xs uppercase tracking-wider text-workshop-blue mb-1">Síntoma 02</span>
+                        Se queda sin batería seguido
+                    </button>
+
+                    <button type="button" data-symptom-key="parpadea_fusibles" class="symptom-btn text-left p-4 rounded-2xl bg-workshop-dark border border-workshop-border hover:border-workshop-blue/60 text-slate-200 font-display font-bold text-base leading-snug transition-all cursor-pointer">
+                        <span class="block text-xs uppercase tracking-wider text-workshop-blue mb-1">Síntoma 03</span>
+                        Parpadea luz o quema fusibles
+                    </button>
+
+                    <button type="button" data-symptom-key="testigo_tablero" class="symptom-btn text-left p-4 rounded-2xl bg-workshop-dark border border-workshop-border hover:border-workshop-blue/60 text-slate-200 font-display font-bold text-base leading-snug transition-all cursor-pointer">
+                        <span class="block text-xs uppercase tracking-wider text-workshop-blue mb-1">Síntoma 04</span>
+                        Prende testigo en el tablero
+                    </button>
+
+                    <button type="button" data-symptom-key="mejorar_sonido_luces" class="symptom-btn text-left p-4 rounded-2xl bg-workshop-dark border border-workshop-border hover:border-workshop-blue/60 text-slate-200 font-display font-bold text-base leading-snug transition-all cursor-pointer">
+                        <span class="block text-xs uppercase tracking-wider text-workshop-blue mb-1">Síntoma 05</span>
+                        Mejorar sonido o luces
+                    </button>
+                </div>
+
+                <!-- Panel de Resultado del Síntoma Seleccionado -->
+                <div id="symptom-result-box" class="rounded-2xl bg-workshop-dark border border-workshop-blue/40 p-6 sm:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                    <div class="space-y-3 max-w-3xl">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-workshop-blue/15 text-workshop-blue text-xs font-display font-bold uppercase tracking-wider">
+                            <i class="ph-fill ph-wrench"></i>
+                            <span id="symptom-badge">Posible Revisión Recomendada</span>
+                        </div>
+                        <h3 id="symptom-title" class="font-display font-extrabold text-2xl sm:text-3xl text-white uppercase">
+                            Hace clic pero no prende
+                        </h3>
+                        <p id="symptom-summary" class="text-slate-300 text-base leading-relaxed">
+                            Cuando gira la llave o se pulsa encendido y se escucha un "clic" sin que gire el motor, solemos revisar el estado de carga y bornes de batería, caída de voltaje en cables principales, automático/solenoide y escobillas del motor de arranque.
+                        </p>
+                        <ul id="symptom-checks" class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2 text-sm text-slate-200">
+                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-workshop-blue"></i> Prueba de voltaje y amperaje de batería</li>
+                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-workshop-blue"></i> Revisión de bornes, tierras y masa de motor</li>
+                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-workshop-blue"></i> Chequeo de automático, bendix y motor de arranque</li>
+                            <li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-workshop-blue"></i> Verificación de relés y circuito de encendido</li>
+                        </ul>
+                    </div>
+
+                    <div class="shrink-0 flex flex-col gap-3">
+                        <button type="button" id="send-symptom-whatsapp-btn" class="inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20bd5a] text-slate-950 font-display font-extrabold text-base sm:text-lg uppercase tracking-wider px-6 py-4 rounded-2xl shadow-lg shadow-[#25D366]/25 transition-all cursor-pointer">
+                            <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
+                            <span>Enviar Síntoma a WhatsApp</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5) CHECKLIST INTERACTIVO PRE-TECNOMECÁNICA (8 ÍTEMS + BARRA DE PROGRESO + ENVÍO DE FALTANTES POR WHATSAPP) -->
+    <section id="checklist" class="py-16 lg:py-20 bg-workshop-card/50 border-y border-workshop-border/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="rounded-3xl bg-workshop-card border border-workshop-border p-6 sm:p-10 shadow-2xl">
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
+                    <div class="max-w-2xl">
+                        <span class="inline-flex items-center gap-2 text-workshop-red font-display font-bold uppercase tracking-wider text-sm mb-2">
+                            <i class="ph-fill ph-clipboard-text"></i>
+                            <span>Preparación Antes del CDA</span>
+                        </span>
+                        <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white uppercase">
+                            Checklist Interactivo Pre-Tecnomecánica
+                        </h2>
+                        <p class="text-slate-300 text-base mt-2">
+                            Marca los puntos que ya verificaste en tu carro. Al final puedes enviar por WhatsApp los ítems faltantes o pendientes de revisión.
+                        </p>
+                    </div>
+
+                    <!-- Indicador y Barra de Progreso en Tiempo Real -->
+                    <div class="w-full lg:w-80 bg-workshop-dark border border-workshop-border rounded-2xl p-4">
+                        <div class="flex items-center justify-between text-sm font-display font-bold uppercase mb-2">
+                            <span class="text-slate-300">Progreso Revisado</span>
+                            <span id="checklist-progress-label" class="text-workshop-blue">0 / 8 (0%)</span>
+                        </div>
+                        <div class="w-full h-3 rounded-full bg-slate-800 overflow-hidden">
+                            <div id="checklist-progress-bar" class="h-full w-0 bg-gradient-to-r from-workshop-blue to-workshop-red transition-all duration-300"></div>
+                        </div>
+                        <p id="checklist-missing-summary" class="text-xs text-slate-400 mt-2">
+                            Pendientes por marcar: 8 de 8 ítems.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 8 Ítems del Checklist -->
+                <div id="pretecno-items-container" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                    <label class="flex items-center gap-4 p-4 rounded-2xl bg-workshop-dark border border-workshop-border hover:border-workshop-blue/60 cursor-pointer transition-colors">
+                        <input type="checkbox" value="Luces bajas y altas" class="pretecno-checkbox w-5 h-5 accent-workshop-blue rounded cursor-pointer">
+                        <span class="text-white font-medium text-base">1. Luces bajas y altas</span>
+                    </label>
+
+                    <label class="flex items-center gap-4 p-4 rounded-2xl bg-workshop-dark border border-workshop-border hover:border-workshop-blue/60 cursor-pointer transition-colors">
+                        <input type="checkbox" value="Direccionales" class="pretecno-checkbox w-5 h-5 accent-workshop-blue rounded cursor-pointer">
+                        <span class="text-white font-medium text-base">2. Direccionales</span>
+                    </label>
+
+                    <label class="flex items-center gap-4 p-4 rounded-2xl bg-workshop-dark border border-workshop-border hover:border-workshop-blue/60 cursor-pointer transition-colors">
+                        <input type="checkbox" value="Luz de freno" class="pretecno-checkbox w-5 h-5 accent-workshop-blue rounded cursor-pointer">
+                        <span class="text-white font-medium text-base">3. Luz de freno</span>
+                    </label>
+
+                    <label class="flex items-center gap-4 p-4 rounded-2xl bg-workshop-dark border border-workshop-border hover:border-workshop-blue/60 cursor-pointer transition-colors">
+                        <input type="checkbox" value="Luz de reversa" class="pretecno-checkbox w-5 h-5 accent-workshop-blue rounded cursor-pointer">
+                        <span class="text-white font-medium text-base">4. Luz de reversa</span>
+                    </label>
+
+                    <label class="flex items-center gap-4 p-4 rounded-2xl bg-workshop-dark border border-workshop-border hover:border-workshop-blue/60 cursor-pointer transition-colors">
+                        <input type="checkbox" value="Pito / bocina" class="pretecno-checkbox w-5 h-5 accent-workshop-blue rounded cursor-pointer">
+                        <span class="text-white font-medium text-base">5. Pito / bocina</span>
+                    </label>
+
+                    <label class="flex items-center gap-4 p-4 rounded-2xl bg-workshop-dark border border-workshop-border hover:border-workshop-blue/60 cursor-pointer transition-colors">
+                        <input type="checkbox" value="Testigos del tablero" class="pretecno-checkbox w-5 h-5 accent-workshop-blue rounded cursor-pointer">
+                        <span class="text-white font-medium text-base">6. Testigos del tablero</span>
+                    </label>
+
+                    <label class="flex items-center gap-4 p-4 rounded-2xl bg-workshop-dark border border-workshop-border hover:border-workshop-blue/60 cursor-pointer transition-colors">
+                        <input type="checkbox" value="Estado y bornes de batería" class="pretecno-checkbox w-5 h-5 accent-workshop-blue rounded cursor-pointer">
+                        <span class="text-white font-medium text-base">7. Estado y bornes de batería</span>
+                    </label>
+
+                    <label class="flex items-center gap-4 p-4 rounded-2xl bg-workshop-dark border border-workshop-border hover:border-workshop-blue/60 cursor-pointer transition-colors">
+                        <input type="checkbox" value="Cables y fusibles visibles" class="pretecno-checkbox w-5 h-5 accent-workshop-blue rounded cursor-pointer">
+                        <span class="text-white font-medium text-base">8. Cables y fusibles visibles</span>
+                    </label>
+                </div>
+
+                <!-- Acciones del Checklist -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-4 border-t border-workshop-border">
+                    <button type="button" id="reset-checklist-btn" class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-workshop-dark hover:bg-slate-800 text-slate-300 border border-workshop-border font-display font-bold uppercase tracking-wider text-sm transition-colors cursor-pointer">
+                        <i class="ph-bold ph-arrow-counter-clockwise"></i>
+                        <span>Limpiar Checklist</span>
+                    </button>
+
+                    <button type="button" id="send-checklist-whatsapp-btn" class="inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-workshop-red to-red-700 hover:from-workshop-redGlow hover:to-workshop-red text-white font-display font-extrabold text-base sm:text-lg uppercase tracking-wider px-7 py-4 rounded-2xl shadow-lg shadow-workshop-red/30 transition-all cursor-pointer">
+                        <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
+                        <span>Pedir Revisión de Faltantes por WhatsApp</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6) SECCIÓN LO QUE HACEMOS POR TU VEHÍCULO (8 TARJETAS CON FOTOGRAFÍAS REALES + COTIZACIÓN WHATSAPP) -->
+    <section id="especialidades" class="py-16 lg:py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <!-- Encabezado -->
-            <div class="text-center max-w-3xl mx-auto mb-14 lg:mb-16">
+            <div class="text-center max-w-3xl mx-auto mb-14">
                 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-workshop-blue/15 border border-workshop-blue/30 text-workshop-blue font-display font-bold uppercase tracking-wider text-sm mb-4">
                     <i class="ph-fill ph-wrench"></i>
-                    <span>Portafolio Completo de Taller</span>
+                    <span>Servicios Especializados</span>
                 </div>
                 <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white uppercase tracking-tight">
                     Lo Que Hacemos Por Tu Vehículo ⚡
                 </h2>
                 <p class="text-slate-300 text-base sm:text-lg mt-3">
-                    Desde iluminación y sonido Car Audio hasta diagnóstico computarizado y revisión pre-tecnomecánica. Todo en un solo lugar con la garantía de <strong class="text-white">El Gordo Eléctrico</strong>.
+                    Cotiza directo por WhatsApp al <strong class="text-white">321 302 5418</strong> el servicio que necesita tu vehículo.
                 </p>
             </div>
 
-            <!-- Cuadrícula de 8 Especialidades con Fotografía Real + Detalles -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
                 <!-- 1. Instalación de Luces -->
                 <article class="group rounded-3xl bg-workshop-card border border-workshop-border hover:border-workshop-blue/80 overflow-hidden shadow-xl flex flex-col transition-all duration-300 hover:-translate-y-1.5">
                     <div class="relative h-48 overflow-hidden bg-slate-900">
-                        <img 
-                            src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80" 
-                            alt="Instalación de luces LED y exploradoras automotrices"
-                            onerror="this.onerror=null; this.src='https://placehold.co/600x400/11151F/00B4D8?text=Instalacion+de+Luces+LED';"
+                        <img
+                            src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80"
+                            alt="Instalación de Luces"
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x400/11151F/00B4D8?text=Instalacion+de+Luces';"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         >
                         <div class="absolute inset-0 bg-gradient-to-t from-workshop-card via-workshop-card/30 to-transparent"></div>
-                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-workshop-dark/85 border border-workshop-blue/40 text-workshop-blue font-display font-bold text-xs uppercase tracking-wider backdrop-blur-sm">
-                            Iluminación LED / HID
-                        </span>
-                        <div class="absolute bottom-3 right-3 w-10 h-10 rounded-xl bg-workshop-blue text-workshop-dark flex items-center justify-center shadow-lg">
-                            <i class="ph-fill ph-headlights text-xl"></i>
-                        </div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
-                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2 group-hover:text-workshop-blue transition-colors">
-                                Instalación de Luces
-                            </h3>
+                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Instalación de Luces</h3>
                             <p class="text-slate-300 text-sm leading-relaxed">
-                                Montaje profesional de bombillos LED de alta potencia, exploradoras, barras exploradoras, luces HID, iluminación ambiental y ajuste de proyección para carretera y ciudad.
+                                Montaje profesional de bombillos LED, exploradoras, barras exploradoras, luces HID y ajuste de iluminación.
                             </p>
                         </div>
-                        <button type="button" onclick="seleccionarServicioFormulario('Instalación de Luces LED y Exploradoras')" class="mt-5 w-full py-2.5 px-4 rounded-xl bg-workshop-dark hover:bg-workshop-blue hover:text-workshop-dark text-workshop-blue border border-workshop-blue/30 font-display font-bold text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer">
-                            <span>Cotizar Luces</span>
-                            <i class="ph-bold ph-arrow-right"></i>
+                        <button type="button" onclick="cotizarServicioWhatsApp('Instalación de Luces')" class="mt-5 w-full py-2.5 px-4 rounded-xl bg-workshop-dark hover:bg-workshop-blue hover:text-workshop-dark text-workshop-blue border border-workshop-blue/30 font-display font-bold text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer">
+                            <i class="ph-fill ph-whatsapp-logo text-lg"></i>
+                            <span>Cotizar por WhatsApp</span>
                         </button>
                     </div>
                 </article>
@@ -450,65 +535,49 @@
                 <!-- 2. Sonido Tipo Car Audio -->
                 <article class="group rounded-3xl bg-workshop-card border border-workshop-border hover:border-workshop-red/80 overflow-hidden shadow-xl flex flex-col transition-all duration-300 hover:-translate-y-1.5">
                     <div class="relative h-48 overflow-hidden bg-slate-900">
-                        <img 
-                            src="https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80" 
-                            alt="Sonido tipo Car Audio, bajos y amplificadores"
+                        <img
+                            src="https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80"
+                            alt="Sonido Tipo Car Audio"
                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/11151F/E62E2D?text=Sonido+Car+Audio';"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         >
                         <div class="absolute inset-0 bg-gradient-to-t from-workshop-card via-workshop-card/30 to-transparent"></div>
-                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-workshop-dark/85 border border-workshop-red/40 text-workshop-red font-display font-bold text-xs uppercase tracking-wider backdrop-blur-sm">
-                            Potencia & Fidelidad
-                        </span>
-                        <div class="absolute bottom-3 right-3 w-10 h-10 rounded-xl bg-workshop-red text-white flex items-center justify-center shadow-lg">
-                            <i class="ph-fill ph-speaker-hifi text-xl"></i>
-                        </div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
-                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2 group-hover:text-workshop-red transition-colors">
-                                Sonido Tipo Car Audio
-                            </h3>
+                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Sonido Tipo Car Audio</h3>
                             <p class="text-slate-300 text-sm leading-relaxed">
-                                Instalación y ecualización de plantas (amplificadores), bajos (subwoofers), medios, tweeters, cajones acústicos y cableado calibre grueso libre de ruidos.
+                                Instalación de plantas amplificadoras, bajos (subwoofers), medios, tweeters y cableado seguro sin ruidos parásitos.
                             </p>
                         </div>
-                        <button type="button" onclick="seleccionarServicioFormulario('Instalación de Sonido Car Audio')" class="mt-5 w-full py-2.5 px-4 rounded-xl bg-workshop-dark hover:bg-workshop-red hover:text-white text-workshop-red border border-workshop-red/30 font-display font-bold text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer">
-                            <span>Cotizar Sonido</span>
-                            <i class="ph-bold ph-arrow-right"></i>
+                        <button type="button" onclick="cotizarServicioWhatsApp('Sonido Tipo Car Audio')" class="mt-5 w-full py-2.5 px-4 rounded-xl bg-workshop-dark hover:bg-workshop-red hover:text-white text-workshop-red border border-workshop-red/30 font-display font-bold text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer">
+                            <i class="ph-fill ph-whatsapp-logo text-lg"></i>
+                            <span>Cotizar por WhatsApp</span>
                         </button>
                     </div>
                 </article>
 
-                <!-- 3. Instalación de Radios y Pantallas -->
+                <!-- 3. Instalación de Radios -->
                 <article class="group rounded-3xl bg-workshop-card border border-workshop-border hover:border-workshop-blue/80 overflow-hidden shadow-xl flex flex-col transition-all duration-300 hover:-translate-y-1.5">
                     <div class="relative h-48 overflow-hidden bg-slate-900">
-                        <img 
-                            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" 
-                            alt="Instalación de radios Android y pantallas multimedia"
-                            onerror="this.onerror=null; this.src='https://placehold.co/600x400/11151F/00B4D8?text=Radios+y+Pantallas';"
+                        <img
+                            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80"
+                            alt="Instalación de Radios"
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x400/11151F/00B4D8?text=Instalacion+de+Radios';"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         >
                         <div class="absolute inset-0 bg-gradient-to-t from-workshop-card via-workshop-card/30 to-transparent"></div>
-                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-workshop-dark/85 border border-workshop-blue/40 text-workshop-blue font-display font-bold text-xs uppercase tracking-wider backdrop-blur-sm">
-                            Multimedia & Reversa
-                        </span>
-                        <div class="absolute bottom-3 right-3 w-10 h-10 rounded-xl bg-workshop-blue text-workshop-dark flex items-center justify-center shadow-lg">
-                            <i class="ph-fill ph-radio text-xl"></i>
-                        </div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
-                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2 group-hover:text-workshop-blue transition-colors">
-                                Instalación de Radios
-                            </h3>
+                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Instalación de Radios</h3>
                             <p class="text-slate-300 text-sm leading-relaxed">
-                                Montaje de radios convencionales, pantallas táctiles Android, CarPlay / Android Auto, cámaras de reversa, sensores de parqueo y mandos al timón.
+                                Instalación de radios convencionales, pantallas Android, CarPlay/Android Auto, cámaras de reversa y mandos de timón.
                             </p>
                         </div>
-                        <button type="button" onclick="seleccionarServicioFormulario('Instalación de Radios y Pantallas')" class="mt-5 w-full py-2.5 px-4 rounded-xl bg-workshop-dark hover:bg-workshop-blue hover:text-workshop-dark text-workshop-blue border border-workshop-blue/30 font-display font-bold text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer">
-                            <span>Cotizar Radio</span>
-                            <i class="ph-bold ph-arrow-right"></i>
+                        <button type="button" onclick="cotizarServicioWhatsApp('Instalación de Radios')" class="mt-5 w-full py-2.5 px-4 rounded-xl bg-workshop-dark hover:bg-workshop-blue hover:text-workshop-dark text-workshop-blue border border-workshop-blue/30 font-display font-bold text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer">
+                            <i class="ph-fill ph-whatsapp-logo text-lg"></i>
+                            <span>Cotizar por WhatsApp</span>
                         </button>
                     </div>
                 </article>
@@ -516,32 +585,24 @@
                 <!-- 4. Revisión de Alternadores -->
                 <article class="group rounded-3xl bg-workshop-card border border-workshop-border hover:border-workshop-red/80 overflow-hidden shadow-xl flex flex-col transition-all duration-300 hover:-translate-y-1.5">
                     <div class="relative h-48 overflow-hidden bg-slate-900">
-                        <img 
-                            src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=800&q=80" 
-                            alt="Revisión y reparación de alternadores automotrices"
+                        <img
+                            src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=800&q=80"
+                            alt="Revisión de Alternadores"
                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/11151F/E62E2D?text=Revision+de+Alternadores';"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         >
                         <div class="absolute inset-0 bg-gradient-to-t from-workshop-card via-workshop-card/30 to-transparent"></div>
-                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-workshop-dark/85 border border-workshop-red/40 text-workshop-red font-display font-bold text-xs uppercase tracking-wider backdrop-blur-sm">
-                            Sistema de Carga
-                        </span>
-                        <div class="absolute bottom-3 right-3 w-10 h-10 rounded-xl bg-workshop-red text-white flex items-center justify-center shadow-lg">
-                            <i class="ph-fill ph-gear-six text-xl"></i>
-                        </div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
-                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2 group-hover:text-workshop-red transition-colors">
-                                Revisión de Alternadores
-                            </h3>
+                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Revisión de Alternadores</h3>
                             <p class="text-slate-300 text-sm leading-relaxed">
-                                Pruebas de generación de voltaje, cambio de reguladores, puente rectificador de diodos, rodamientos y escobillas para evitar que tu carro se quede sin carga.
+                                Pruebas de carga, reguladores de voltaje, diodos, rodamientos y escobillas para mantener tu sistema eléctrico estable.
                             </p>
                         </div>
-                        <button type="button" onclick="seleccionarServicioFormulario('Revisión y Reparación de Alternador')" class="mt-5 w-full py-2.5 px-4 rounded-xl bg-workshop-dark hover:bg-workshop-red hover:text-white text-workshop-red border border-workshop-red/30 font-display font-bold text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer">
-                            <span>Revisar Alternador</span>
-                            <i class="ph-bold ph-arrow-right"></i>
+                        <button type="button" onclick="cotizarServicioWhatsApp('Revisión de Alternadores')" class="mt-5 w-full py-2.5 px-4 rounded-xl bg-workshop-dark hover:bg-workshop-red hover:text-white text-workshop-red border border-workshop-red/30 font-display font-bold text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer">
+                            <i class="ph-fill ph-whatsapp-logo text-lg"></i>
+                            <span>Cotizar por WhatsApp</span>
                         </button>
                     </div>
                 </article>
@@ -549,32 +610,24 @@
                 <!-- 5. Baterías -->
                 <article class="group rounded-3xl bg-workshop-card border border-workshop-border hover:border-workshop-blue/80 overflow-hidden shadow-xl flex flex-col transition-all duration-300 hover:-translate-y-1.5">
                     <div class="relative h-48 overflow-hidden bg-slate-900">
-                        <img 
-                            src="https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?auto=format&fit=crop&w=800&q=80" 
-                            alt="Revisión, carga y cambio de baterías de carro"
-                            onerror="this.onerror=null; this.src='https://placehold.co/600x400/11151F/00B4D8?text=Baterias+Automotrices';"
+                        <img
+                            src="https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?auto=format&fit=crop&w=800&q=80"
+                            alt="Baterías Automotrices"
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x400/11151F/00B4D8?text=Baterias';"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         >
                         <div class="absolute inset-0 bg-gradient-to-t from-workshop-card via-workshop-card/30 to-transparent"></div>
-                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-workshop-dark/85 border border-workshop-blue/40 text-workshop-blue font-display font-bold text-xs uppercase tracking-wider backdrop-blur-sm">
-                            Energía & Arranque
-                        </span>
-                        <div class="absolute bottom-3 right-3 w-10 h-10 rounded-xl bg-workshop-blue text-workshop-dark flex items-center justify-center shadow-lg">
-                            <i class="ph-fill ph-car-battery text-xl"></i>
-                        </div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
-                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2 group-hover:text-workshop-blue transition-colors">
-                                Baterías
-                            </h3>
+                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Baterías</h3>
                             <p class="text-slate-300 text-sm leading-relaxed">
-                                Diagnóstico digital de vida útil y amperaje, detección de fugas de corriente (consumos parásitos), limpieza de bornes y cambio de baterías garantizadas.
+                                Diagnóstico de estado y amperaje, detección de fugas de corriente, limpieza de bornes y reemplazo garantizado.
                             </p>
                         </div>
-                        <button type="button" onclick="seleccionarServicioFormulario('Revisión o Cambio de Batería')" class="mt-5 w-full py-2.5 px-4 rounded-xl bg-workshop-dark hover:bg-workshop-blue hover:text-workshop-dark text-workshop-blue border border-workshop-blue/30 font-display font-bold text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer">
-                            <span>Revisar Batería</span>
-                            <i class="ph-bold ph-arrow-right"></i>
+                        <button type="button" onclick="cotizarServicioWhatsApp('Baterías')" class="mt-5 w-full py-2.5 px-4 rounded-xl bg-workshop-dark hover:bg-workshop-blue hover:text-workshop-dark text-workshop-blue border border-workshop-blue/30 font-display font-bold text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer">
+                            <i class="ph-fill ph-whatsapp-logo text-lg"></i>
+                            <span>Cotizar por WhatsApp</span>
                         </button>
                     </div>
                 </article>
@@ -582,65 +635,49 @@
                 <!-- 6. Motor de Arranque -->
                 <article class="group rounded-3xl bg-workshop-card border border-workshop-border hover:border-workshop-red/80 overflow-hidden shadow-xl flex flex-col transition-all duration-300 hover:-translate-y-1.5">
                     <div class="relative h-48 overflow-hidden bg-slate-900">
-                        <img 
-                            src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=800&q=80" 
-                            alt="Reparación de motor de arranque automotriz"
+                        <img
+                            src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=800&q=80"
+                            alt="Motor de Arranque"
                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/11151F/E62E2D?text=Motor+de+Arranque';"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         >
                         <div class="absolute inset-0 bg-gradient-to-t from-workshop-card via-workshop-card/30 to-transparent"></div>
-                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-workshop-dark/85 border border-workshop-red/40 text-workshop-red font-display font-bold text-xs uppercase tracking-wider backdrop-blur-sm">
-                            Encendido al Toque
-                        </span>
-                        <div class="absolute bottom-3 right-3 w-10 h-10 rounded-xl bg-workshop-red text-white flex items-center justify-center shadow-lg">
-                            <i class="ph-fill ph-engine text-xl"></i>
-                        </div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
-                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2 group-hover:text-workshop-red transition-colors">
-                                Motor de Arranque
-                            </h3>
+                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Motor de Arranque</h3>
                             <p class="text-slate-300 text-sm leading-relaxed">
-                                Mantenimiento y reparación completa de arranques: cambio de automático (solenoide), bendix, escobillas, bujes y limpieza interna para encendido inmediato.
+                                Reparación y mantenimiento de motores de arranque: automático, bendix, escobillas, bujes y encendido confiable.
                             </p>
                         </div>
-                        <button type="button" onclick="seleccionarServicioFormulario('Reparación de Motor de Arranque')" class="mt-5 w-full py-2.5 px-4 rounded-xl bg-workshop-dark hover:bg-workshop-red hover:text-white text-workshop-red border border-workshop-red/30 font-display font-bold text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer">
-                            <span>Revisar Arranque</span>
-                            <i class="ph-bold ph-arrow-right"></i>
+                        <button type="button" onclick="cotizarServicioWhatsApp('Motor de Arranque')" class="mt-5 w-full py-2.5 px-4 rounded-xl bg-workshop-dark hover:bg-workshop-red hover:text-white text-workshop-red border border-workshop-red/30 font-display font-bold text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer">
+                            <i class="ph-fill ph-whatsapp-logo text-lg"></i>
+                            <span>Cotizar por WhatsApp</span>
                         </button>
                     </div>
                 </article>
 
-                <!-- 7. Revisión de Escaneo Eléctrico Convencional -->
+                <!-- 7. Escaneo Eléctrico Convencional -->
                 <article class="group rounded-3xl bg-workshop-card border border-workshop-border hover:border-workshop-blue/80 overflow-hidden shadow-xl flex flex-col transition-all duration-300 hover:-translate-y-1.5">
                     <div class="relative h-48 overflow-hidden bg-slate-900">
-                        <img 
-                            src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80" 
-                            alt="Escaneo eléctrico automotriz y lectura de códigos"
+                        <img
+                            src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80"
+                            alt="Escaneo Eléctrico Convencional"
                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/11151F/00B4D8?text=Escaneo+Electrico';"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         >
                         <div class="absolute inset-0 bg-gradient-to-t from-workshop-card via-workshop-card/30 to-transparent"></div>
-                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-workshop-dark/85 border border-workshop-blue/40 text-workshop-blue font-display font-bold text-xs uppercase tracking-wider backdrop-blur-sm">
-                            Diagnóstico Preciso
-                        </span>
-                        <div class="absolute bottom-3 right-3 w-10 h-10 rounded-xl bg-workshop-blue text-workshop-dark flex items-center justify-center shadow-lg">
-                            <i class="ph-fill ph-laptop text-xl"></i>
-                        </div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
-                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2 group-hover:text-workshop-blue transition-colors">
-                                Escaneo Eléctrico Convencional
-                            </h3>
+                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Escaneo Eléctrico Convencional</h3>
                             <p class="text-slate-300 text-sm leading-relaxed">
-                                Lectura y borrado de códigos de falla (Check Engine), revisión de sensores, fusibleras, relevadores y líneas de comunicación para encontrar el daño exacto.
+                                Lectura de códigos de falla, revisión de sensores, fusibles, relés y líneas eléctricas para ir directo al daño.
                             </p>
                         </div>
-                        <button type="button" onclick="seleccionarServicioFormulario('Revisión de Escaneo Eléctrico Convencional')" class="mt-5 w-full py-2.5 px-4 rounded-xl bg-workshop-dark hover:bg-workshop-blue hover:text-workshop-dark text-workshop-blue border border-workshop-blue/30 font-display font-bold text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer">
-                            <span>Agendar Escaneo</span>
-                            <i class="ph-bold ph-arrow-right"></i>
+                        <button type="button" onclick="cotizarServicioWhatsApp('Escaneo Eléctrico Convencional')" class="mt-5 w-full py-2.5 px-4 rounded-xl bg-workshop-dark hover:bg-workshop-blue hover:text-workshop-dark text-workshop-blue border border-workshop-blue/30 font-display font-bold text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer">
+                            <i class="ph-fill ph-whatsapp-logo text-lg"></i>
+                            <span>Cotizar por WhatsApp</span>
                         </button>
                     </div>
                 </article>
@@ -648,336 +685,290 @@
                 <!-- 8. Revisión Pre-Tecnomecánica -->
                 <article class="group rounded-3xl bg-workshop-card border border-workshop-border hover:border-workshop-red/80 overflow-hidden shadow-xl flex flex-col transition-all duration-300 hover:-translate-y-1.5">
                     <div class="relative h-48 overflow-hidden bg-slate-900">
-                        <img 
-                            src="https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=800&q=80" 
-                            alt="Revisión Pre-Tecnomecánica de luces y sistema eléctrico"
+                        <img
+                            src="https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=800&q=80"
+                            alt="Revisión Pre-Tecnomecánica"
                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/11151F/E62E2D?text=Revision+Pre-Tecnomecanica';"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         >
                         <div class="absolute inset-0 bg-gradient-to-t from-workshop-card via-workshop-card/30 to-transparent"></div>
-                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-workshop-dark/85 border border-workshop-red/40 text-workshop-red font-display font-bold text-xs uppercase tracking-wider backdrop-blur-sm">
-                            Pasa a la Primera
-                        </span>
-                        <div class="absolute bottom-3 right-3 w-10 h-10 rounded-xl bg-workshop-red text-white flex items-center justify-center shadow-lg">
-                            <i class="ph-fill ph-check-circle text-xl"></i>
-                        </div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between">
                         <div>
-                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2 group-hover:text-workshop-red transition-colors">
-                                Revisión Pre-Tecnomecánica
-                            </h3>
+                            <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Revisión Pre-Tecnomecánica</h3>
                             <p class="text-slate-300 text-sm leading-relaxed">
-                                Chequeo preventivo integral: alineación e intensidad de farolas, direccionales, estacionarias, stop/freno, reversa, pito y testigos del tablero antes del CDA.
+                                Chequeo preventivo de luces, direccionales, stop, reversa, pito y testigos antes de llevar el carro a revisión.
                             </p>
                         </div>
-                        <button type="button" onclick="seleccionarServicioFormulario('Revisión Pre-Tecnomecánica Eléctrica')" class="mt-5 w-full py-2.5 px-4 rounded-xl bg-workshop-dark hover:bg-workshop-red hover:text-white text-workshop-red border border-workshop-red/30 font-display font-bold text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer">
-                            <span>Chequeo Pre-Tecno</span>
-                            <i class="ph-bold ph-arrow-right"></i>
+                        <button type="button" onclick="cotizarServicioWhatsApp('Revisión Pre-Tecnomecánica')" class="mt-5 w-full py-2.5 px-4 rounded-xl bg-workshop-dark hover:bg-workshop-red hover:text-white text-workshop-red border border-workshop-red/30 font-display font-bold text-sm uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer">
+                            <i class="ph-fill ph-whatsapp-logo text-lg"></i>
+                            <span>Cotizar por WhatsApp</span>
                         </button>
                     </div>
                 </article>
-
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN: NUESTRO COMPROMISO (4 PILARES DE ATENCIÓN) -->
-    <section id="servicios" class="py-16 lg:py-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <!-- Encabezado de Sección -->
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-workshop-red/15 border border-workshop-red/30 text-workshop-red font-display font-bold uppercase tracking-wider text-sm mb-4">
-                    <span>🔥 Garantía Servicio Eléctrico Santander</span>
-                </div>
-                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white uppercase tracking-tight">
-                    ¿Por qué elegir al Gordo Eléctrico?
-                </h2>
-            </div>
-
-            <!-- Grid de 4 Pilares -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                
-                <!-- Pilar 1 -->
-                <div class="group relative rounded-3xl bg-workshop-card border border-workshop-border hover:border-workshop-blue/70 p-7 sm:p-8 transition-all duration-300 shadow-xl">
-                    <div class="flex items-start gap-5">
-                        <div class="w-14 h-14 rounded-2xl bg-workshop-blue/15 border border-workshop-blue/30 text-workshop-blue group-hover:bg-workshop-blue group-hover:text-workshop-dark flex items-center justify-center shrink-0 transition-colors duration-300">
-                            <i class="ph-fill ph-cpu text-3xl"></i>
-                        </div>
-                        <div>
-                            <div class="text-xs font-display font-bold uppercase tracking-widest text-workshop-blue mb-1">01 / Precisión Total</div>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-2 group-hover:text-workshop-blue transition-colors">
-                                Diagnóstico eléctrico automotriz
-                            </h3>
-                            <p class="text-slate-300 text-base leading-relaxed">
-                                Ubicamos la falla a la fija, sin rodeos ni adivinanzas, para cuidar tu tiempo y tu bolsillo.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pilar 2 -->
-                <div class="group relative rounded-3xl bg-workshop-card border border-workshop-border hover:border-workshop-red/70 p-7 sm:p-8 transition-all duration-300 shadow-xl">
-                    <div class="flex items-start gap-5">
-                        <div class="w-14 h-14 rounded-2xl bg-workshop-red/15 border border-workshop-red/30 text-workshop-red group-hover:bg-workshop-red group-hover:text-white flex items-center justify-center shrink-0 transition-colors duration-300">
-                            <i class="ph-fill ph-wrench text-3xl"></i>
-                        </div>
-                        <div>
-                            <div class="text-xs font-display font-bold uppercase tracking-widest text-workshop-red mb-1">02 / 100% Operativo</div>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-2 group-hover:text-workshop-red transition-colors">
-                                Reparación y mantenimiento
-                            </h3>
-                            <p class="text-slate-300 text-base leading-relaxed">
-                                Dejamos el sistema eléctrico operando al cien por ciento con trabajo limpio y seguro.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pilar 3 -->
-                <div class="group relative rounded-3xl bg-workshop-card border border-workshop-border hover:border-workshop-red/70 p-7 sm:p-8 transition-all duration-300 shadow-xl">
-                    <div class="flex items-start gap-5">
-                        <div class="w-14 h-14 rounded-2xl bg-workshop-red/15 border border-workshop-red/30 text-workshop-red group-hover:bg-workshop-red group-hover:text-white flex items-center justify-center shrink-0 transition-colors duration-300">
-                            <i class="ph-fill ph-speaker-high text-3xl"></i>
-                        </div>
-                        <div>
-                            <div class="text-xs font-display font-bold uppercase tracking-widest text-workshop-red mb-1">03 / Potencia y Estilo</div>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-2 group-hover:text-workshop-red transition-colors">
-                                Instalación de accesorios y sonidos
-                            </h3>
-                            <p class="text-slate-300 text-base leading-relaxed">
-                                Potenciamos y personalizamos tu vehículo con equipos de audio, luces y accesorios bien instalados.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pilar 4 -->
-                <div class="group relative rounded-3xl bg-workshop-card border border-workshop-border hover:border-workshop-blue/70 p-7 sm:p-8 transition-all duration-300 shadow-xl">
-                    <div class="flex items-start gap-5">
-                        <div class="w-14 h-14 rounded-2xl bg-workshop-blue/15 border border-workshop-blue/30 text-workshop-blue group-hover:bg-workshop-blue group-hover:text-workshop-dark flex items-center justify-center shrink-0 transition-colors duration-300">
-                            <i class="ph-fill ph-handshake text-3xl"></i>
-                        </div>
-                        <div>
-                            <div class="text-xs font-display font-bold uppercase tracking-widest text-workshop-blue mb-1">04 / Confianza Directa</div>
-                            <h3 class="font-display font-bold text-2xl text-white uppercase mb-2 group-hover:text-workshop-blue transition-colors">
-                                Atención responsable y personalizada
-                            </h3>
-                            <p class="text-slate-300 text-base leading-relaxed">
-                                Te explicamos claro qué tiene tu auto y te acompañamos en todo el proceso, con el respaldo y la confianza del Gordo Eléctrico.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- NUEVA SECCIÓN: GALERÍA VISUAL DEL TALLER Y RESULTADOS -->
-    <section id="galeria" class="py-16 lg:py-20 bg-workshop-card/40 border-t border-workshop-border/70">
+    <!-- 7) SECCIÓN TRABAJOS CON SELLO DE CALIDAD -->
+    <section id="calidad" class="py-16 lg:py-20 bg-workshop-card/50 border-y border-workshop-border/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
-                <div>
-                    <span class="text-workshop-blue font-display font-bold uppercase tracking-widest text-sm">Trabajo Limpio y Profesional</span>
-                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white uppercase mt-1">
-                        En Acción en Nuestro Taller
-                    </h2>
-                </div>
-                <p class="text-slate-400 text-sm sm:text-base max-w-md">
-                    Equipamiento especializado, cableado ordenado y acabados de calidad para autos particulares y de trabajo.
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="inline-flex items-center gap-2 text-workshop-blue font-display font-bold uppercase tracking-wider text-sm mb-2">
+                    <i class="ph-fill ph-seal-check"></i>
+                    <span>Estándar de Taller</span>
+                </span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white uppercase">
+                    Trabajos con Sello de Calidad
+                </h2>
+                <p class="text-slate-300 text-base mt-2">
+                    En <strong class="text-white">Servicio Eléctrico Santander</strong> cuidamos cada detalle técnico para que el trabajo dure y no cause problemas a futuro.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
-                <!-- Imagen Destacada Grande -->
-                <div class="md:col-span-7 relative rounded-3xl overflow-hidden border border-workshop-border h-72 sm:h-80 group">
-                    <img 
-                        src="https://images.unsplash.com/photo-1632823471565-1ecdf5c6da46?auto=format&fit=crop&w=1200&q=80" 
-                        alt="Diagnóstico eléctrico en taller automotriz"
-                        onerror="this.onerror=null; this.src='https://placehold.co/900x500/11151F/00B4D8?text=Diagnostico+Electrico+Profesional';"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    >
-                    <div class="absolute inset-0 bg-gradient-to-t from-workshop-dark via-workshop-dark/20 to-transparent"></div>
-                    <div class="absolute bottom-5 left-5 right-5">
-                        <span class="px-3 py-1 rounded-lg bg-workshop-red text-white font-display font-bold text-xs uppercase tracking-wider">Taller de Verdad</span>
-                        <h3 class="font-display font-bold text-2xl text-white uppercase mt-2">Diagnóstico y Reparación de Sistemas Complejos</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="rounded-3xl bg-workshop-card border border-workshop-border p-6 shadow-xl">
+                    <div class="w-12 h-12 rounded-2xl bg-workshop-blue/15 text-workshop-blue flex items-center justify-center mb-4">
+                        <i class="ph-fill ph-git-branch text-2xl"></i>
                     </div>
+                    <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Cableado ordenado y protegido</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Rutas limpias, forros protectores y amarres firmes lejos de partes calientes o de fricción.
+                    </p>
                 </div>
 
-                <!-- Dos Imágenes Apiladas / Laterales -->
-                <div class="md:col-span-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-5">
-                    <div class="relative rounded-3xl overflow-hidden border border-workshop-border h-36 sm:h-[150px] group">
-                        <img 
-                            src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=80" 
-                            alt="Iluminación LED y personalización automotriz"
-                            onerror="this.onerror=null; this.src='https://placehold.co/700x300/11151F/E62E2D?text=Iluminacion+y+Accesorios';"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        >
-                        <div class="absolute inset-0 bg-gradient-to-r from-workshop-dark/85 via-workshop-dark/40 to-transparent"></div>
-                        <div class="absolute inset-0 p-5 flex flex-col justify-center">
-                            <span class="text-workshop-blue font-display font-bold text-xs uppercase tracking-wider">Estética y Seguridad</span>
-                            <h4 class="font-display font-bold text-lg text-white uppercase">Luces LED, Exploradoras y Tableros</h4>
-                        </div>
+                <div class="rounded-3xl bg-workshop-card border border-workshop-border p-6 shadow-xl">
+                    <div class="w-12 h-12 rounded-2xl bg-workshop-red/15 text-workshop-red flex items-center justify-center mb-4">
+                        <i class="ph-fill ph-sliders text-2xl"></i>
                     </div>
+                    <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Fusibles y relés adecuados</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Protección eléctrica calibrada según el consumo real de cada circuito, luz o equipo de sonido.
+                    </p>
+                </div>
 
-                    <div class="relative rounded-3xl overflow-hidden border border-workshop-border h-36 sm:h-[150px] group">
-                        <img 
-                            src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=900&q=80" 
-                            alt="Car Audio y radios multimedia"
-                            onerror="this.onerror=null; this.src='https://placehold.co/700x300/11151F/00B4D8?text=Car+Audio+y+Radios';"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        >
-                        <div class="absolute inset-0 bg-gradient-to-r from-workshop-dark/85 via-workshop-dark/40 to-transparent"></div>
-                        <div class="absolute inset-0 p-5 flex flex-col justify-center">
-                            <span class="text-workshop-red font-display font-bold text-xs uppercase tracking-wider">Confort al Volante</span>
-                            <h4 class="font-display font-bold text-lg text-white uppercase">Car Audio, Bajos y Radios Pantalla</h4>
+                <div class="rounded-3xl bg-workshop-card border border-workshop-border p-6 shadow-xl">
+                    <div class="w-12 h-12 rounded-2xl bg-workshop-blue/15 text-workshop-blue flex items-center justify-center mb-4">
+                        <i class="ph-fill ph-plugs-connected text-2xl"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Terminales y masas firmes</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Uniones sólidas y puntos de masa bien limpios para evitar caídas de voltaje o fallas intermitentes.
+                    </p>
+                </div>
+
+                <div class="rounded-3xl bg-workshop-card border border-workshop-border p-6 shadow-xl">
+                    <div class="w-12 h-12 rounded-2xl bg-workshop-red/15 text-workshop-red flex items-center justify-center mb-4">
+                        <i class="ph-fill ph-prohibit text-2xl"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white uppercase mb-2">Sin chambonadas</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Nada de empalmes al aire, cables sueltos ni soluciones improvisadas: trabajo honesto y bien hecho.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8) SECCIÓN DE TESTIMONIOS REALES (SIN TESTIMONIOS FALSOS + CREAR/BORRAR EN LOCALSTORAGE + WHATSAPP OPCIONAL) -->
+    <section id="testimonios" class="py-16 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-10">
+                <span class="inline-flex items-center gap-2 text-workshop-red font-display font-bold uppercase tracking-wider text-sm mb-2">
+                    <i class="ph-fill ph-chats-circle"></i>
+                    <span>Experiencias Reales del Taller</span>
+                </span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white uppercase">
+                    Testimonios Reales
+                </h2>
+                <p class="text-slate-300 text-base sm:text-lg mt-2">
+                    Aquí solo se publican testimonios reales creados por clientes o desde el taller. Puedes agregar uno nuevo, eliminarlo cuando desees o compartirlo por WhatsApp al <strong class="text-white">321 302 5418</strong>.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Formulario para Crear Testimonio Real -->
+                <div class="lg:col-span-5 rounded-3xl bg-workshop-card border border-workshop-border p-6 sm:p-8 shadow-2xl">
+                    <h3 class="font-display font-bold text-2xl text-white uppercase mb-1">
+                        Publicar Testimonio Real
+                    </h3>
+                    <p class="text-slate-400 text-sm mb-6">
+                        Se guarda de forma local en este navegador (localStorage).
+                    </p>
+
+                    <form id="testimonial-form" class="space-y-4">
+                        <div>
+                            <label for="testimonial-name" class="block text-sm font-medium text-slate-300 mb-1">Nombre del cliente *</label>
+                            <input type="text" id="testimonial-name" required placeholder="Ej. Andrés Gómez"
+                                class="w-full px-4 py-3 rounded-xl bg-workshop-dark border border-workshop-border text-white placeholder-slate-500 focus:outline-none focus:border-workshop-blue">
                         </div>
+
+                        <div>
+                            <label for="testimonial-vehicle" class="block text-sm font-medium text-slate-300 mb-1">Tipo de vehículo *</label>
+                            <input type="text" id="testimonial-vehicle" required placeholder="Ej. Mazda 3 / Taxi Logan / Camioneta"
+                                class="w-full px-4 py-3 rounded-xl bg-workshop-dark border border-workshop-border text-white placeholder-slate-500 focus:outline-none focus:border-workshop-blue">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="testimonial-service" class="block text-sm font-medium text-slate-300 mb-1">Servicio realizado *</label>
+                                <select id="testimonial-service" required
+                                    class="w-full px-4 py-3 rounded-xl bg-workshop-dark border border-workshop-border text-white focus:outline-none focus:border-workshop-blue">
+                                    <option value="Instalación de Luces">Instalación de Luces</option>
+                                    <option value="Sonido Tipo Car Audio">Sonido Tipo Car Audio</option>
+                                    <option value="Instalación de Radios">Instalación de Radios</option>
+                                    <option value="Revisión de Alternadores">Revisión de Alternadores</option>
+                                    <option value="Baterías">Baterías</option>
+                                    <option value="Motor de Arranque">Motor de Arranque</option>
+                                    <option value="Escaneo Eléctrico Convencional">Escaneo Eléctrico Convencional</option>
+                                    <option value="Revisión Pre-Tecnomecánica">Revisión Pre-Tecnomecánica</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="testimonial-rating" class="block text-sm font-medium text-slate-300 mb-1">Calificación (1 a 5 estrellas) *</label>
+                                <select id="testimonial-rating" required
+                                    class="w-full px-4 py-3 rounded-xl bg-workshop-dark border border-workshop-border text-white focus:outline-none focus:border-workshop-blue">
+                                    <option value="5">★★★★★ (5 estrellas)</option>
+                                    <option value="4">★★★★☆ (4 estrellas)</option>
+                                    <option value="3">★★★☆☆ (3 estrellas)</option>
+                                    <option value="2">★★☆☆☆ (2 estrellas)</option>
+                                    <option value="1">★☆☆☆☆ (1 estrella)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="testimonial-comment" class="block text-sm font-medium text-slate-300 mb-1">Comentario *</label>
+                            <textarea id="testimonial-comment" rows="3" required placeholder="Escribe el testimonio real sobre la atención y el trabajo..."
+                                class="w-full px-4 py-3 rounded-xl bg-workshop-dark border border-workshop-border text-white placeholder-slate-500 focus:outline-none focus:border-workshop-blue resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-workshop-red to-red-700 hover:from-workshop-redGlow hover:to-workshop-red text-white font-display font-bold text-base sm:text-lg uppercase tracking-wider py-3.5 px-6 rounded-2xl shadow-lg shadow-workshop-red/25 transition-all cursor-pointer">
+                            <i class="ph-fill ph-plus-circle text-xl"></i>
+                            <span>Guardar y Publicar Testimonio</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Lista de Testimonios Reales (Inicia limpia / sin testimonios falsos) -->
+                <div class="lg:col-span-7">
+                    <div id="testimonials-list" class="space-y-4">
+                        <!-- Renderizado dinámico por JavaScript -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN CONTACTO Y AGENDAMIENTO DE CITAS -->
-    <section id="contacto" class="py-16 lg:py-24 relative overflow-hidden">
-        <!-- Luces neón de ambiente -->
-        <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-workshop-red/15 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-workshop-blue/15 rounded-full blur-3xl pointer-events-none"></div>
-
+    <!-- 9) SECCIÓN DE CONTACTO CON FORMULARIO GENERAL DE CITA HACIA WHATSAPP 3213025418 Y PIE DE PÁGINA -->
+    <section id="contacto" class="py-16 lg:py-24 bg-workshop-card/50 border-t border-workshop-border/80 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="rounded-3xl bg-workshop-card border border-workshop-border shadow-2xl overflow-hidden">
                 <div class="grid grid-cols-1 lg:grid-cols-12">
-                    
-                    <!-- Columna Izquierda: Información Directa y WhatsApp -->
-                    <div class="lg:col-span-5 bg-gradient-to-br from-workshop-dark via-[#101522] to-workshop-dark p-8 sm:p-10 lg:p-12 border-b lg:border-b-0 lg:border-r border-workshop-border flex flex-col justify-between">
+                    <!-- Columna Izquierda -->
+                    <div class="lg:col-span-5 bg-gradient-to-br from-workshop-dark via-[#101522] to-workshop-dark p-8 sm:p-10 border-b lg:border-b-0 lg:border-r border-workshop-border flex flex-col justify-between">
                         <div>
-                            <span class="inline-flex items-center gap-2 text-workshop-blue font-display font-bold uppercase tracking-wider text-sm mb-3">
+                            <span class="inline-flex items-center gap-2 text-workshop-blue font-display font-bold uppercase tracking-wider text-sm mb-2">
                                 <i class="ph-fill ph-lightning"></i>
                                 <span>Contacto Directo</span>
                             </span>
                             <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white uppercase leading-tight mb-4">
                                 Agenda tu cita con <span class="text-workshop-red">El Gordo Eléctrico</span>
                             </h2>
-                            <p class="text-slate-300 text-base leading-relaxed mb-8">
-                                ¿Tu vehículo presenta fallas eléctricas, problemas de encendido, luces o quieres instalar un buen sistema de sonido? Escríbenos ahora y te atendemos sin rodeos.
+                            <p class="text-slate-300 text-base leading-relaxed mb-6">
+                                Escríbenos o llámanos al <strong class="text-white">+57 321 302 5418</strong> para revisar tu vehículo con seriedad y buen trato.
                             </p>
 
-                            <!-- Tarjetas de Info -->
                             <div class="space-y-4">
-                                <a href="tel:+573213025418" class="flex items-start gap-4 p-4 rounded-2xl bg-workshop-card/80 hover:bg-workshop-card border border-workshop-border hover:border-workshop-blue/60 transition-colors group">
-                                    <div class="w-10 h-10 rounded-xl bg-workshop-blue/15 text-workshop-blue group-hover:bg-workshop-blue group-hover:text-workshop-dark flex items-center justify-center shrink-0 transition-colors">
+                                <a href="tel:+573213025418" class="flex items-start gap-4 p-4 rounded-2xl bg-workshop-dark/80 border border-workshop-border hover:border-workshop-blue/60 transition-colors">
+                                    <div class="w-10 h-10 rounded-xl bg-workshop-blue/15 text-workshop-blue flex items-center justify-center shrink-0">
                                         <i class="ph-fill ph-phone-call text-xl"></i>
                                     </div>
                                     <div>
-                                        <h4 class="font-display font-bold text-white uppercase text-base">Línea Directa & WhatsApp</h4>
-                                        <p class="text-workshop-blue font-semibold text-base tracking-wide">+57 321 302 5418</p>
-                                        <p class="text-slate-400 text-xs mt-0.5">Toca aquí para llamar directamente al taller</p>
+                                        <h4 class="font-display font-bold text-white uppercase text-base">Teléfono & WhatsApp</h4>
+                                        <p class="text-workshop-blue font-semibold text-base">+57 321 302 5418</p>
                                     </div>
                                 </a>
 
-                                <div class="flex items-start gap-4 p-4 rounded-2xl bg-workshop-card/80 border border-workshop-border">
+                                <div class="flex items-start gap-4 p-4 rounded-2xl bg-workshop-dark/80 border border-workshop-border">
                                     <div class="w-10 h-10 rounded-xl bg-workshop-red/15 text-workshop-red flex items-center justify-center shrink-0">
                                         <i class="ph-fill ph-clock text-xl"></i>
                                     </div>
                                     <div>
-                                        <h4 class="font-display font-bold text-white uppercase text-base">Horario de Atención</h4>
-                                        <p class="text-slate-400 text-sm">Lunes a Sábado: 8:00 AM – 6:00 PM</p>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-start gap-4 p-4 rounded-2xl bg-workshop-card/80 border border-workshop-border">
-                                    <div class="w-10 h-10 rounded-xl bg-workshop-blue/15 text-workshop-blue flex items-center justify-center shrink-0">
-                                        <i class="ph-fill ph-car text-xl"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-display font-bold text-white uppercase text-base">Todo Tipo de Vehículos</h4>
-                                        <p class="text-slate-400 text-sm">Automóviles particulares, camionetas y vehículos de trabajo.</p>
+                                        <h4 class="font-display font-bold text-white uppercase text-base">Atención de Taller</h4>
+                                        <p class="text-slate-400 text-sm">Lunes a Sábado • Servicio Eléctrico Santander</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Botón Directo WhatsApp -->
-                        <div class="mt-8 pt-6 border-t border-workshop-border space-y-3">
-                            <button type="button" onclick="abrirWhatsAppDirecto()" class="w-full flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-slate-950 font-display font-extrabold text-lg uppercase tracking-wider py-4 px-6 rounded-2xl shadow-lg shadow-[#25D366]/25 transition-all transform hover:-translate-y-0.5 cursor-pointer">
+                        <div class="mt-8 pt-6 border-t border-workshop-border">
+                            <button type="button" id="contact-whatsapp-btn" class="w-full flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-slate-950 font-display font-extrabold text-lg uppercase tracking-wider py-4 px-6 rounded-2xl shadow-lg shadow-[#25D366]/25 transition-all cursor-pointer">
                                 <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
-                                <span>WhatsApp: 321 302 5418</span>
+                                <span>WhatsApp 321 302 5418</span>
                             </button>
                         </div>
                     </div>
 
-                    <!-- Columna Derecha: Formulario Interactivo de Diagnóstico / Cita -->
-                    <div class="lg:col-span-7 p-8 sm:p-10 lg:p-12">
+                    <!-- Columna Derecha: Formulario General de Cita -->
+                    <div class="lg:col-span-7 p-8 sm:p-10">
                         <h3 class="font-display font-bold text-2xl sm:text-3xl text-white uppercase mb-2">
-                            Solicita tu Diagnóstico o Cotización
+                            Formulario General de Cita
                         </h3>
                         <p class="text-slate-400 text-sm sm:text-base mb-6">
-                            Completa los datos de tu vehículo y prepara tu mensaje directo para el taller.
+                            Completa tus datos y envía la solicitud directamente a WhatsApp (+57 321 302 5418).
                         </p>
 
                         <form id="appointment-form" class="space-y-5">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                <!-- Nombre -->
                                 <div>
                                     <label for="client-name" class="block text-sm font-medium text-slate-300 mb-1.5">Tu Nombre *</label>
                                     <input type="text" id="client-name" required placeholder="Ej. Carlos Pérez"
-                                        class="w-full px-4 py-3.5 rounded-xl bg-workshop-dark border border-workshop-border text-white placeholder-slate-500 focus:outline-none focus:border-workshop-blue focus:ring-1 focus:ring-workshop-blue transition-colors">
+                                        class="w-full px-4 py-3.5 rounded-xl bg-workshop-dark border border-workshop-border text-white placeholder-slate-500 focus:outline-none focus:border-workshop-blue">
                                 </div>
 
-                                <!-- Vehículo -->
                                 <div>
                                     <label for="vehicle-model" class="block text-sm font-medium text-slate-300 mb-1.5">Vehículo (Marca / Modelo) *</label>
                                     <input type="text" id="vehicle-model" required placeholder="Ej. Chevrolet Spark / Hilux"
-                                        class="w-full px-4 py-3.5 rounded-xl bg-workshop-dark border border-workshop-border text-white placeholder-slate-500 focus:outline-none focus:border-workshop-blue focus:ring-1 focus:ring-workshop-blue transition-colors">
+                                        class="w-full px-4 py-3.5 rounded-xl bg-workshop-dark border border-workshop-border text-white placeholder-slate-500 focus:outline-none focus:border-workshop-blue">
                                 </div>
                             </div>
 
-                            <!-- Servicio Requerido -->
                             <div>
-                                <label for="service-type" class="block text-sm font-medium text-slate-300 mb-1.5">¿Qué servicio necesitas? *</label>
+                                <label for="service-type" class="block text-sm font-medium text-slate-300 mb-1.5">Servicio Requerido *</label>
                                 <select id="service-type" required
-                                    class="w-full px-4 py-3.5 rounded-xl bg-workshop-dark border border-workshop-border text-white focus:outline-none focus:border-workshop-blue focus:ring-1 focus:ring-workshop-blue transition-colors">
-                                    <option value="Diagnóstico eléctrico automotriz">⚡ Diagnóstico eléctrico automotriz</option>
-                                    <option value="Instalación de Luces LED y Exploradoras">💡 Instalación de Luces (LED, exploradoras, HID)</option>
-                                    <option value="Instalación de Sonido Car Audio">🔊 Sonido tipo Car Audio (plantas, bajos, medios)</option>
-                                    <option value="Instalación de Radios y Pantallas">📻 Instalación de Radios y Pantallas Multimedia</option>
-                                    <option value="Revisión y Reparación de Alternador">⚙️ Revisión y Reparación de Alternadores</option>
-                                    <option value="Revisión o Cambio de Batería">🔋 Baterías (revisión, carga y reemplazo)</option>
-                                    <option value="Reparación de Motor de Arranque">🔑 Reparación de Motor de Arranque</option>
-                                    <option value="Revisión de Escaneo Eléctrico Convencional">💻 Revisión de Escaneo Eléctrico Convencional</option>
-                                    <option value="Revisión Pre-Tecnomecánica Eléctrica">✅ Revisión Pre-Tecnomecánica (luces y eléctrico)</option>
+                                    class="w-full px-4 py-3.5 rounded-xl bg-workshop-dark border border-workshop-border text-white focus:outline-none focus:border-workshop-blue">
+                                    <option value="Diagnóstico eléctrico automotriz">Diagnóstico eléctrico automotriz</option>
+                                    <option value="Instalación de Luces">Instalación de Luces</option>
+                                    <option value="Sonido Tipo Car Audio">Sonido Tipo Car Audio</option>
+                                    <option value="Instalación de Radios">Instalación de Radios</option>
+                                    <option value="Revisión de Alternadores">Revisión de Alternadores</option>
+                                    <option value="Baterías">Baterías</option>
+                                    <option value="Motor de Arranque">Motor de Arranque</option>
+                                    <option value="Escaneo Eléctrico Convencional">Escaneo Eléctrico Convencional</option>
+                                    <option value="Revisión Pre-Tecnomecánica">Revisión Pre-Tecnomecánica</option>
                                 </select>
                             </div>
 
-                            <!-- Descripción de la falla o proyecto -->
                             <div>
-                                <label for="problem-desc" class="block text-sm font-medium text-slate-300 mb-1.5">Cuéntanos qué presenta tu vehículo *</label>
-                                <textarea id="problem-desc" rows="3" required placeholder="Describe brevemente la falla eléctrica o el accesorio/sonido que deseas instalar..."
-                                    class="w-full px-4 py-3.5 rounded-xl bg-workshop-dark border border-workshop-border text-white placeholder-slate-500 focus:outline-none focus:border-workshop-blue focus:ring-1 focus:ring-workshop-blue transition-colors resize-none"></textarea>
+                                <label for="problem-desc" class="block text-sm font-medium text-slate-300 mb-1.5">Detalles de la falla o servicio *</label>
+                                <textarea id="problem-desc" rows="3" required placeholder="Cuéntanos qué necesita tu vehículo..."
+                                    class="w-full px-4 py-3.5 rounded-xl bg-workshop-dark border border-workshop-border text-white placeholder-slate-500 focus:outline-none focus:border-workshop-blue resize-none"></textarea>
                             </div>
 
-                            <!-- Botones de Envío -->
-                            <div class="pt-2 flex flex-col sm:flex-row gap-4">
-                                <button type="submit" class="flex-1 inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-workshop-red to-red-700 hover:from-workshop-redGlow hover:to-workshop-red text-white font-display font-bold text-lg uppercase tracking-wider py-4 px-6 rounded-2xl shadow-lg shadow-workshop-red/30 hover:shadow-workshop-red/50 transition-all cursor-pointer">
-                                    <i class="ph-fill ph-paper-plane-tilt text-xl"></i>
-                                    <span>Enviar y Agendar por WhatsApp</span>
-                                </button>
-                <div class="flex flex-wrap justify-center items-center gap-6 text-sm text-slate-400">
-                    <a href="#inicio" class="hover:text-white transition-colors">Inicio</a>
-                    <a href="#nosotros" class="hover:text-white transition-colors">El Gordo Eléctrico</a>
-                    <a href="#especialidades" class="hover:text-white transition-colors">Lo Que Hacemos</a>
-                    <a href="#galeria" class="hover:text-white transition-colors">Taller</a>
-                    <a href="tel:+573213025418" class="text-workshop-blue hover:text-white font-semibold transition-colors flex items-center gap-1.5">
-                        <i class="ph-fill ph-phone-call"></i>
-                        <span>+57 321 302 5418</span>
-                    </a>
+                            <button type="submit" class="w-full inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-workshop-red to-red-700 hover:from-workshop-redGlow hover:to-workshop-red text-white font-display font-bold text-lg uppercase tracking-wider py-4 px-6 rounded-2xl shadow-lg shadow-workshop-red/30 transition-all cursor-pointer">
+                                <i class="ph-fill ph-paper-plane-tilt text-xl"></i>
+                                <span>Enviar Cita por WhatsApp (321 302 5418)</span>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- PIE DE PÁGINA -->
     <footer class="bg-workshop-dark border-t border-workshop-border pt-12 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-workshop-border/70">
@@ -987,15 +978,16 @@
                     </div>
                     <div>
                         <span class="font-display font-extrabold text-xl text-white uppercase tracking-wider">Servicio Eléctrico Santander</span>
-                        <p class="text-xs text-slate-400">Liderado por <span class="text-workshop-blue font-semibold">El Gordo Eléctrico</span> • Electricidad Automotriz</p>
+                        <p class="text-xs text-slate-400">Dirigido por <span class="text-workshop-blue font-semibold">El Gordo Eléctrico</span> • Cel: +57 321 302 5418</p>
                     </div>
                 </div>
 
-                <div class="flex flex-wrap justify-center gap-6 text-sm text-slate-400">
+                <div class="flex flex-wrap justify-center gap-5 text-sm text-slate-400">
                     <a href="#inicio" class="hover:text-white transition-colors">Inicio</a>
-                    <a href="#nosotros" class="hover:text-white transition-colors">El Gordo Eléctrico</a>
-                    <a href="#especialidades" class="hover:text-white transition-colors">Lo Que Hacemos</a>
-                    <a href="#galeria" class="hover:text-white transition-colors">Taller</a>
+                    <a href="#simulador" class="hover:text-white transition-colors">Síntomas</a>
+                    <a href="#checklist" class="hover:text-white transition-colors">Pre-Tecno</a>
+                    <a href="#especialidades" class="hover:text-white transition-colors">Servicios</a>
+                    <a href="#testimonios" class="hover:text-white transition-colors">Testimonios</a>
                     <a href="#contacto" class="hover:text-white transition-colors">Contacto</a>
                 </div>
             </div>
@@ -1007,144 +999,462 @@
         </div>
     </footer>
 
-    <!-- Botón Flotante de WhatsApp en Móvil / Desktop -->
-    <button type="button" onclick="abrirWhatsAppDirecto()" aria-label="Contactar por WhatsApp"
+    <!-- Botón Flotante de WhatsApp -->
+    <button type="button" id="floating-whatsapp-btn" aria-label="WhatsApp 321 302 5418"
         class="fixed bottom-6 left-6 z-40 w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-slate-950 flex items-center justify-center shadow-2xl shadow-[#25D366]/40 hover:scale-110 transition-transform cursor-pointer">
         <i class="ph-fill ph-whatsapp-logo text-3xl"></i>
     </button>
 
-    <!-- Scripts de Interactividad -->
     <script>
-        // Número de WhatsApp oficial colombiano de Servicio Eléctrico Santander (+57 321 302 5418)
-        const TELEFONO_WHATSAPP = "573213025418";
+        // Todo el JavaScript se ejecuta dentro de DOMContentLoaded para evitar errores de carga
+        document.addEventListener('DOMContentLoaded', () => {
+            const TELEFONO_WHATSAPP = "573213025418";
+            const STORAGE_KEY_TESTIMONIOS = "servicio_electrico_santander_testimonios_v1";
 
-        // Actualizar año actual en el footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+            // Año actual en footer
+            const yearEl = document.getElementById('current-year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-        // Función para previsualizar el archivo de portada del usuario si lo selecciona desde su PC/celular
-        function previsualizarPortadaLocal(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const customImg = document.getElementById('hero-custom-logo-img');
-                const vectorEmblem = document.getElementById('hero-vector-emblem');
-                customImg.src = e.target.result;
-                customImg.classList.remove('hidden');
-                vectorEmblem.classList.add('hidden');
-                mostrarNotificacion("¡Portada Actualizada!", "Tu logotipo oficial se ha cargado en la portada.");
+            // Notificación Toast sin alert()
+            let toastTimeout;
+            function mostrarNotificacion(titulo, mensaje) {
+                const toast = document.getElementById('toast-notification');
+                const titleEl = document.getElementById('toast-title');
+                const msgEl = document.getElementById('toast-message');
+                if (!toast || !titleEl || !msgEl) return;
+
+                titleEl.textContent = titulo;
+                msgEl.textContent = mensaje;
+                toast.classList.remove('translate-y-24', 'opacity-0');
+                clearTimeout(toastTimeout);
+                toastTimeout = setTimeout(() => {
+                    toast.classList.add('translate-y-24', 'opacity-0');
+                }, 4000);
+            }
+
+            // Helper para abrir WhatsApp de forma segura
+            function irAWhatsApp(mensajeTexto) {
+                const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(mensajeTexto)}`;
+                window.open(url, '_blank', 'noopener,noreferrer');
+            }
+
+            // Botones rápidos de WhatsApp
+            const whatsappGeneralMsg = "¡Hola Servicio Eléctrico Santander! ⚡🚗 Quisiera comunicarme con El Gordo Eléctrico.";
+            ['header-whatsapp-btn', 'contact-whatsapp-btn', 'floating-whatsapp-btn'].forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) {
+                    btn.addEventListener('click', () => {
+                        mostrarNotificacion("WhatsApp 321 302 5418", "Abriendo chat con Servicio Eléctrico Santander...");
+                        irAWhatsApp(whatsappGeneralMsg);
+                    });
+                }
+            });
+
+            // Botón de Emergencia / No Prende por WhatsApp
+            const urgentBtn = document.getElementById('urgent-whatsapp-btn');
+            if (urgentBtn) {
+                urgentBtn.addEventListener('click', () => {
+                    const msgUrgente = "🚨 *EMERGENCIA / NO PRENDE* - Servicio Eléctrico Santander ⚡🚗\nHola El Gordo Eléctrico, necesito atención urgente porque mi vehículo no prende o tiene falla eléctrica.";
+                    mostrarNotificacion("Emergencia Activada", "Enviando reporte urgente a WhatsApp 321 302 5418...");
+                    irAWhatsApp(msgUrgente);
+                });
+            }
+
+            // Menú móvil
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+
+            if (mobileMenuBtn && mobileMenu && menuIcon) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    const isHidden = mobileMenu.classList.contains('hidden');
+                    mobileMenu.classList.toggle('hidden', !isHidden);
+                    menuIcon.classList.toggle('ph-list', !isHidden);
+                    menuIcon.classList.toggle('ph-x', isHidden);
+                });
+
+                document.querySelectorAll('.mobile-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        menuIcon.classList.replace('ph-x', 'ph-list');
+                    });
+                });
+            }
+
+            // Previsualización de imagen de portada local (ej. imagenesportada-logo.webp.jpg)
+            const customLogoImg = document.getElementById('hero-custom-logo-img');
+            const vectorEmblem = document.getElementById('hero-vector-emblem');
+            const uploadInput = document.getElementById('upload-logo-input');
+
+            if (customLogoImg && vectorEmblem) {
+                customLogoImg.addEventListener('load', () => {
+                    customLogoImg.classList.remove('hidden');
+                    vectorEmblem.classList.add('hidden');
+                });
+                customLogoImg.addEventListener('error', () => {
+                    customLogoImg.classList.add('hidden');
+                    vectorEmblem.classList.remove('hidden');
+                });
+            }
+
+            if (uploadInput && customLogoImg && vectorEmblem) {
+                uploadInput.addEventListener('change', (e) => {
+                    const file = e.target.files && e.target.files[0];
+                    if (!file) return;
+                    const reader = new FileReader();
+                    reader.onload = (ev) => {
+                        customLogoImg.src = ev.target.result;
+                        customLogoImg.classList.remove('hidden');
+                        vectorEmblem.classList.add('hidden');
+                        mostrarNotificacion("Portada Cargada", "Tu imagen de portada se ha aplicado correctamente.");
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            // 4) Lógica del Simulador Síntoma -> Posible Revisión (5 síntomas)
+            const sintomasData = {
+                clic_no_prende: {
+                    titulo: "Hace clic pero no prende",
+                    resumen: "Cuando se escucha un clic al intentar encender pero el motor no gira, revisamos carga y bornes de batería, caída de tensión en cables gruesos, automático/solenoide y escobillas del motor de arranque.",
+                    revisiones: [
+                        "Prueba de carga y bornes de batería",
+                        "Revisión de automático, bendix y escobillas de arranque",
+                        "Chequeo de tierras y masa de motor/chasis",
+                        "Verificación de relé y señal de encendido"
+                    ]
+                },
+                sin_bateria: {
+                    titulo: "Se queda sin batería seguido",
+                    resumen: "Si el vehículo descarga la batería en poco tiempo, evaluamos si el alternador está cargando correctamente, si la batería perdió retención o si hay un consumo parásito/fuga de corriente con el carro apagado.",
+                    revisiones: [
+                        "Medición de carga del alternador y regulador",
+                        "Prueba de consumo parásito (fuga de corriente)",
+                        "Revisión de estado real de la batería",
+                        "Chequeo de luces de cortesía, alarmas o radios"
+                    ]
+                },
+                parpadea_fusibles: {
+                    titulo: "Parpadea luz o quema fusibles",
+                    resumen: "Los parpadeos o fusibles quemados indican falsos contactos, sulfatación, humedad, sobrecarga o un corto circuito parcial en el ramal o accesorio conectado.",
+                    revisiones: [
+                        "Inspección de fusilera, relés y portafusibles",
+                        "Búsqueda de cortos o roces en el cableado",
+                        "Revisión de conectores, sockets y tierras",
+                        "Verificación de consumos en luces o accesorios"
+                    ]
+                },
+                testigo_tablero: {
+                    titulo: "Prende testigo en el tablero",
+                    resumen: "Una luz indicadora encendida alerta sobre carga, sensores, sistemas eléctricos o fallas registradas que deben diagnosticarse con precisión sin adivinar.",
+                    revisiones: [
+                        "Escaneo eléctrico convencional y lectura de códigos",
+                        "Revisión de carga del sistema eléctrico",
+                        "Chequeo de sensores y conectores asociados",
+                        "Diagnóstico claro con explicación al conductor"
+                    ]
+                },
+                mejorar_sonido_luces: {
+                    titulo: "Mejorar sonido o luces",
+                    resumen: "Para instalar luces LED/exploradoras, radios pantalla o sonido tipo Car Audio de forma segura, dimensionamos calibres de cable, portafusibles, relés y puntos de masa.",
+                    revisiones: [
+                        "Selección de calibre de cable y fusibles adecuados",
+                        "Instalación limpia de luces, radio, planta o bajos",
+                        "Configuración de masas para evitar ruidos",
+                        "Prueba de funcionamiento y carga eléctrica"
+                    ]
+                }
             };
-            reader.readAsDataURL(file);
-        }
 
-        // Seleccionar automáticamente un servicio desde las tarjetas y bajar al formulario
-        function seleccionarServicioFormulario(nombreServicio) {
-            const select = document.getElementById('service-type');
-            for (let i = 0; i < select.options.length; i++) {
-                if (select.options[i].value === nombreServicio) {
-                    select.selectedIndex = i;
-                    break;
+            let sintomaActualKey = "clic_no_prende";
+            const symptomButtons = document.querySelectorAll('.symptom-btn');
+            const symptomTitleEl = document.getElementById('symptom-title');
+            const symptomSummaryEl = document.getElementById('symptom-summary');
+            const symptomChecksEl = document.getElementById('symptom-checks');
+            const sendSymptomBtn = document.getElementById('send-symptom-whatsapp-btn');
+
+            function renderSintoma(key) {
+                const info = sintomasData[key];
+                if (!info) return;
+                sintomaActualKey = key;
+
+                symptomButtons.forEach(btn => {
+                    const active = btn.getAttribute('data-symptom-key') === key;
+                    btn.classList.toggle('border-2', active);
+                    btn.classList.toggle('border-workshop-blue', active);
+                    btn.classList.toggle('text-white', active);
+                    btn.classList.toggle('border', !active);
+                    btn.classList.toggle('border-workshop-border', !active);
+                    btn.classList.toggle('text-slate-200', !active);
+                });
+
+                if (symptomTitleEl) symptomTitleEl.textContent = info.titulo;
+                if (symptomSummaryEl) symptomSummaryEl.textContent = info.resumen;
+                if (symptomChecksEl) {
+                    symptomChecksEl.innerHTML = info.revisiones.map(item =>
+                        `<li class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-workshop-blue"></i><span>${item}</span></li>`
+                    ).join('');
                 }
             }
-            document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
-            setTimeout(() => {
-                document.getElementById('client-name').focus();
-                mostrarNotificacion("Servicio Seleccionado", `Listo para cotizar: ${nombreServicio}`);
-            }, 600);
-        }
 
-        // Menú móvil toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            const isHidden = mobileMenu.classList.contains('hidden');
-            if (isHidden) {
-                mobileMenu.classList.remove('hidden');
-                menuIcon.classList.replace('ph-list', 'ph-x');
-            } else {
-                mobileMenu.classList.add('hidden');
-                menuIcon.classList.replace('ph-x', 'ph-list');
-            }
-        });
-
-        // Cerrar menú móvil al hacer clic en un enlace
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuIcon.classList.replace('ph-x', 'ph-list');
+            symptomButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const key = btn.getAttribute('data-symptom-key');
+                    renderSintoma(key);
+                });
             });
-        });
 
-        // Sistema de notificaciones Toast (sin usar alert)
-        let toastTimeout;
-        function mostrarNotificacion(titulo, mensaje) {
-            const toast = document.getElementById('toast-notification');
-            document.getElementById('toast-title').textContent = titulo;
-            document.getElementById('toast-message').textContent = mensaje;
+            if (sendSymptomBtn) {
+                sendSymptomBtn.addEventListener('click', () => {
+                    const info = sintomasData[sintomaActualKey];
+                    const msg = `¡Hola Servicio Eléctrico Santander! ⚡🚗\n` +
+                        `Usé el simulador de síntomas y quiero consultar con *El Gordo Eléctrico*:\n\n` +
+                        `🔍 *Síntoma:* ${info.titulo}\n` +
+                        `🛠️ *Posible revisión:* ${info.revisiones.join(", ")}`;
+                    mostrarNotificacion("Síntoma Preparado", "Abriendo WhatsApp con tu diagnóstico guiado...");
+                    irAWhatsApp(msg);
+                });
+            }
 
-            toast.classList.remove('translate-y-24', 'opacity-0');
-            clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => {
-                toast.classList.add('translate-y-24', 'opacity-0');
-            }, 4500);
-        }
+            // 5) Lógica del Checklist Interactivo Pre-Tecnomecánica (8 ítems)
+            const checkboxes = Array.from(document.querySelectorAll('.pretecno-checkbox'));
+            const progressLabel = document.getElementById('checklist-progress-label');
+            const progressBar = document.getElementById('checklist-progress-bar');
+            const missingSummary = document.getElementById('checklist-missing-summary');
+            const resetChecklistBtn = document.getElementById('reset-checklist-btn');
+            const sendChecklistBtn = document.getElementById('send-checklist-whatsapp-btn');
 
-        // Abrir WhatsApp con mensaje general
-        function abrirWhatsAppDirecto() {
-            const mensaje = encodeURIComponent("¡Hola Servicio Eléctrico Santander! ⚡🚗 Quisiera consultar con El Gordo Eléctrico sobre una revisión eléctrica para mi vehículo.");
-            mostrarNotificacion("Conectando con el Taller", "Abriendo chat directo de WhatsApp...");
-            window.open(`https://wa.me/${TELEFONO_WHATSAPP}?text=${mensaje}`, '_blank');
-        }
+            function actualizarChecklist() {
+                const total = checkboxes.length;
+                const checkedCount = checkboxes.filter(cb => cb.checked).length;
+                const faltantes = checkboxes.filter(cb => !cb.checked).map(cb => cb.value);
+                const porcentaje = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
 
-        // Envío del formulario de agendamiento
-        document.getElementById('appointment-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            try {
-                const nombre = document.getElementById('client-name').value.trim();
-                const vehiculo = document.getElementById('vehicle-model').value.trim();
-                const servicio = document.getElementById('service-type').value;
-                const descripcion = document.getElementById('problem-desc').value.trim();
+                if (progressLabel) progressLabel.textContent = `${checkedCount} / ${total} (${porcentaje}%)`;
+                if (progressBar) progressBar.style.width = `${porcentaje}%`;
+                if (missingSummary) {
+                    missingSummary.textContent = faltantes.length === 0
+                        ? "¡Todos los 8 puntos marcados en tu checklist!"
+                        : `Faltantes por revisar (${faltantes.length}): ${faltantes.join(", ")}.`;
+                }
+            }
 
-                const textoWhatsApp = `¡Hola Servicio Eléctrico Santander! ⚡🚗\n` +
-                    `Me gustaría agendar una atención con *El Gordo Eléctrico*:\n\n` +
-                    `👤 *Nombre:* ${nombre}\n` +
-                    `🚘 *Vehículo:* ${vehiculo}\n` +
-                    `🔧 *Servicio:* ${servicio}\n` +
-                    `📝 *Detalle:* ${descripcion}`;
+            checkboxes.forEach(cb => cb.addEventListener('change', actualizarChecklist));
+            actualizarChecklist();
 
-                mostrarNotificacion("¡Solicitud Lista!", "Redirigiendo a WhatsApp con los datos de tu vehículo...");
-                
-                setTimeout(() => {
-                    window.open(`https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(textoWhatsApp)}`, '_blank');
-                }, 600);
-            } catch (err) {
-                mostrarNotificacion("Aviso", "Por favor verifica los campos e intenta nuevamente.");
+            if (resetChecklistBtn) {
+                resetChecklistBtn.addEventListener('click', () => {
+                    checkboxes.forEach(cb => { cb.checked = false; });
+                    actualizarChecklist();
+                    mostrarNotificacion("Checklist Reiniciado", "Se limpiaron todos los ítems marcados.");
+                });
+            }
+
+            if (sendChecklistBtn) {
+                sendChecklistBtn.addEventListener('click', () => {
+                    const faltantes = checkboxes.filter(cb => !cb.checked).map(cb => cb.value);
+                    const revisados = checkboxes.filter(cb => cb.checked).map(cb => cb.value);
+                    const listaFaltantes = faltantes.length > 0
+                        ? faltantes.map(item => `- ${item}`).join("\n")
+                        : "Ninguno marcado como pendiente (quiero revisión general pre-tecnomecánica).";
+
+                    const msg = `¡Hola Servicio Eléctrico Santander! ⚡🚗\n` +
+                        `Quiero agendar *Revisión Pre-Tecnomecánica* con *El Gordo Eléctrico*:\n\n` +
+                        `✅ *Ya revisados (${revisados.length}/8):* ${revisados.length > 0 ? revisados.join(", ") : "Ninguno aún"}\n` +
+                        `⚠️ *Ítems faltantes por revisar (${faltantes.length}):*\n${listaFaltantes}`;
+
+                    mostrarNotificacion("Checklist Listo", "Enviando ítems faltantes por WhatsApp...");
+                    irAWhatsApp(msg);
+                });
+            }
+
+            // 6) Cotización directa por WhatsApp desde cada tarjeta de Lo Que Hacemos
+            window.cotizarServicioWhatsApp = function(nombreServicio) {
+                const msg = `¡Hola Servicio Eléctrico Santander! ⚡🚗\n` +
+                    `Quisiera cotizar el servicio de *${nombreServicio}* con *El Gordo Eléctrico*.`;
+                mostrarNotificacion("Cotización Directa", `Abriendo WhatsApp para: ${nombreServicio}`);
+                irAWhatsApp(msg);
+            };
+
+            // 8) Testimonios Reales (Inicia vacío / sin testimonios falsos + localStorage + borrar + enviar por WhatsApp)
+            const testimonialForm = document.getElementById('testimonial-form');
+            const testimonialsListEl = document.getElementById('testimonials-list');
+
+            function cargarTestimonios() {
+                try {
+                    const raw = localStorage.getItem(STORAGE_KEY_TESTIMONIOS);
+                    if (!raw) return [];
+                    const parsed = JSON.parse(raw);
+                    return Array.isArray(parsed) ? parsed : [];
+                } catch (e) {
+                    return [];
+                }
+            }
+
+            function guardarTestimonios(lista) {
+                try {
+                    localStorage.setItem(STORAGE_KEY_TESTIMONIOS, JSON.stringify(lista));
+                } catch (e) {
+                    mostrarNotificacion("Aviso de Almacenamiento", "No se pudo guardar en localStorage en este navegador.");
+                }
+            }
+
+            function escapeHTML(str) {
+                return String(str)
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
+
+            function renderizarTestimonios() {
+                if (!testimonialsListEl) return;
+                const testimonios = cargarTestimonios();
+
+                if (testimonios.length === 0) {
+                    testimonialsListEl.innerHTML = `
+                        <div class="rounded-3xl bg-workshop-card border border-dashed border-workshop-border p-10 text-center">
+                            <div class="w-14 h-14 rounded-2xl bg-workshop-dark border border-workshop-border text-workshop-blue flex items-center justify-center mx-auto mb-4">
+                                <i class="ph-fill ph-chat-teardrop-dots text-3xl"></i>
+                            </div>
+                            <h3 class="font-display font-bold text-2xl text-white uppercase">Aún no hay testimonios publicados</h3>
+                            <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-md mx-auto">
+                                Utiliza el formulario de la izquierda para crear y publicar un testimonio real de un cliente del taller.
+                            </p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                testimonialsListEl.innerHTML = testimonios.map(t => {
+                    const starsCount = Math.max(1, Math.min(5, Number(t.rating) || 5));
+                    const starsText = "★".repeat(starsCount) + "☆".repeat(5 - starsCount);
+
+                    return `
+                        <article class="rounded-3xl bg-workshop-card border border-workshop-border p-6 shadow-xl space-y-4">
+                            <div class="flex flex-wrap items-start justify-between gap-3">
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <h4 class="font-display font-bold text-xl text-white uppercase">${escapeHTML(t.name)}</h4>
+                                        <span class="text-amber-400 text-sm tracking-wider" aria-label="${starsCount} de 5 estrellas">${starsText}</span>
+                                    </div>
+                                    <p class="text-xs sm:text-sm text-workshop-blue font-medium mt-0.5">
+                                        ${escapeHTML(t.vehicle)} • <span class="text-slate-300">${escapeHTML(t.service)}</span>
+                                    </p>
+                                </div>
+
+                                <div class="flex items-center gap-2">
+                                    <button type="button" data-share-id="${escapeHTML(t.id)}" class="share-testimonial-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#25D366]/15 hover:bg-[#25D366] text-[#25D366] hover:text-slate-950 border border-[#25D366]/40 text-xs font-display font-bold uppercase tracking-wider transition-colors cursor-pointer">
+                                        <i class="ph-fill ph-whatsapp-logo text-base"></i>
+                                        <span>Enviar por WhatsApp</span>
+                                    </button>
+                                    <button type="button" data-delete-id="${escapeHTML(t.id)}" class="delete-testimonial-btn inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-workshop-red/15 hover:bg-workshop-red text-workshop-red hover:text-white border border-workshop-red/40 text-xs font-display font-bold uppercase tracking-wider transition-colors cursor-pointer">
+                                        <i class="ph-bold ph-trash text-sm"></i>
+                                        <span>Borrar</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <p class="text-slate-200 text-sm sm:text-base leading-relaxed bg-workshop-dark/70 rounded-2xl p-4 border border-workshop-border/70">
+                                "${escapeHTML(t.comment)}"
+                            </p>
+                        </article>
+                    `;
+                }).join('');
+
+                // Eventos para borrar testimonios
+                testimonialsListEl.querySelectorAll('.delete-testimonial-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const idToDelete = btn.getAttribute('data-delete-id');
+                        const actualizada = cargarTestimonios().filter(item => item.id !== idToDelete);
+                        guardarTestimonios(actualizada);
+                        renderizarTestimonios();
+                        mostrarNotificacion("Testimonio Eliminado", "Se borró el testimonio seleccionado.");
+                    });
+                });
+
+                // Eventos para enviar testimonio real por WhatsApp al 321 302 5418
+                testimonialsListEl.querySelectorAll('.share-testimonial-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const idToShare = btn.getAttribute('data-share-id');
+                        const found = cargarTestimonios().find(item => item.id === idToShare);
+                        if (!found) return;
+                        const stars = "★".repeat(Number(found.rating) || 5);
+                        const msg = `⭐ *Testimonio Real - Servicio Eléctrico Santander* ⚡🚗\n\n` +
+                            `👤 *Cliente:* ${found.name}\n` +
+                            `🚘 *Vehículo:* ${found.vehicle}\n` +
+                            `🔧 *Servicio:* ${found.service}\n` +
+                            `🌟 *Calificación:* ${stars} (${found.rating}/5)\n` +
+                            `💬 *Comentario:* "${found.comment}"`;
+                        mostrarNotificacion("Compartir por WhatsApp", "Abriendo WhatsApp con este testimonio...");
+                        irAWhatsApp(msg);
+                    });
+                });
+            }
+
+            if (testimonialForm) {
+                testimonialForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const nameInput = document.getElementById('testimonial-name');
+                    const vehicleInput = document.getElementById('testimonial-vehicle');
+                    const serviceInput = document.getElementById('testimonial-service');
+                    const ratingInput = document.getElementById('testimonial-rating');
+                    const commentInput = document.getElementById('testimonial-comment');
+
+                    const name = nameInput ? nameInput.value.trim() : "";
+                    const vehicle = vehicleInput ? vehicleInput.value.trim() : "";
+                    const service = serviceInput ? serviceInput.value : "";
+                    const rating = ratingInput ? Number(ratingInput.value) : 5;
+                    const comment = commentInput ? commentInput.value.trim() : "";
+
+                    if (!name || !vehicle || !service || !comment) {
+                        mostrarNotificacion("Campos Incompletos", "Por favor completa todos los campos del testimonio.");
+                        return;
+                    }
+
+                    const nuevoTestimonio = {
+                        id: "test_" + Date.now() + "_" + Math.random().toString(36).slice(2, 7),
+                        name,
+                        vehicle,
+                        service,
+                        rating,
+                        comment
+                    };
+
+                    const listaActual = cargarTestimonios();
+                    listaActual.unshift(nuevoTestimonio);
+                    guardarTestimonios(listaActual);
+                    renderizarTestimonios();
+                    testimonialForm.reset();
+                    mostrarNotificacion("Testimonio Publicado", "Tu testimonio real se guardó correctamente.");
+                });
+            }
+
+            renderizarTestimonios();
+
+            // 9) Formulario General de Cita hacia WhatsApp 321 302 5418
+            const appointmentForm = document.getElementById('appointment-form');
+            if (appointmentForm) {
+                appointmentForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const nombre = document.getElementById('client-name').value.trim();
+                    const vehiculo = document.getElementById('vehicle-model').value.trim();
+                    const servicio = document.getElementById('service-type').value;
+                    const descripcion = document.getElementById('problem-desc').value.trim();
+
+                    const textoWhatsApp = `¡Hola Servicio Eléctrico Santander! ⚡🚗\n` +
+                        `Quiero agendar una cita con *El Gordo Eléctrico*:\n\n` +
+                        `👤 *Nombre:* ${nombre}\n` +
+                        `🚘 *Vehículo:* ${vehiculo}\n` +
+                        `🔧 *Servicio:* ${servicio}\n` +
+                        `📝 *Detalle:* ${descripcion}`;
+
+                    mostrarNotificacion("Cita Preparada", "Redirigiendo a WhatsApp +57 321 302 5418...");
+                    irAWhatsApp(textoWhatsApp);
+                });
             }
         });
-
-        // Copiar datos del formulario al portapapeles de forma segura
-        function copiarResumenCita() {
-            const nombre = document.getElementById('client-name').value.trim() || "No especificado";
-            const vehiculo = document.getElementById('vehicle-model').value.trim() || "No especificado";
-            const servicio = document.getElementById('service-type').value;
-            const descripcion = document.getElementById('problem-desc').value.trim() || "Sin descripción adicional";
-
-            const resumen = `Solicitud Servicio Eléctrico Santander (El Gordo Eléctrico)\nNombre: ${nombre}\nVehículo: ${vehiculo}\nServicio: ${servicio}\nDetalle: ${descripcion}`;
-
-            const tempInput = document.createElement('textarea');
-            tempInput.value = resumen;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            try {
-                document.execCommand('copy');
-                mostrarNotificacion("¡Datos Copiados!", "El resumen de tu cita se copió al portapapeles.");
-            } catch (err) {
-                mostrarNotificacion("No se pudo copiar", "Selecciona el texto manualmente si deseas copiarlo.");
-            }
-            document.body.removeChild(tempInput);
-        }
     </script>
 </body>
 </html>
